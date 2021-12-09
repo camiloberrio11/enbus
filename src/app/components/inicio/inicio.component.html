@@ -1,0 +1,289 @@
+<div class="container enbus">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card iq-card mb-3 ibes" style="z-index: 2">
+        <div class="card-body">
+          <h3 class="card-title iq-card-title text-white" i18n>
+            COMPRA TUS TIQUETES
+          </h3>
+          <div class="iq-menu-horizontal-tab">
+            <nav class="iq-sidebar-menu" style="padding-left: 20px">
+              <form
+                [formGroup]="tripForm"
+                class="form-inline align-items-start"
+                (ngSubmit)="onSubmit()"
+              >
+                <div class="col-sm-12 col-md-4 col-lg-3 form-group">
+                  <label for="selectOrigen" class="text-white">ORIGEN*</label>
+                  <!-- <select id="selectOrigen" class="form-control"
+                                        (ngModelChange)="onChangeOrigen($event)" formControlName="origen" required>
+                                        <option value="" selected hidden>Seleccionar</option>
+                                        <option *ngFor="let origen of origenes" [ngValue]="origen">
+                                            {{ origen }}</option>
+                                    </select> -->
+                  <!-- <ngx-select-dropdown (change)="onChangeOrigen($event)" formControlName="origen"
+                                        [multiple]="false" [config]="configOrigen" [options]="origenes"
+                                        class="mySelectDropdown form-control">
+                                    </ngx-select-dropdown> -->
+
+                  <mat-form-field class="form-control">
+                    <input
+                      type="text"
+                      aria-label="Number"
+                      matInput
+                      formControlName="origen"
+                      [matAutocomplete]="auto1"
+                    />
+                    <mat-autocomplete
+                      #auto1="matAutocomplete"
+                      (optionSelected)="onChangeOrigen($event.option.value)"
+                    >
+                      <mat-option
+                        *ngFor="let origen of origenesFiltrados | async"
+                        [value]="origen"
+                      >
+                        {{ origen }}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+
+                  <small
+                    class="text-danger"
+                    *ngIf="
+                      tripForm.get('origen').errors &&
+                      (tripForm.get('origen').dirty ||
+                        tripForm.get('origen').touched)
+                    "
+                    i18n
+                    >*Este campo es requerido</small
+                  >
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-3 form-group">
+                  <label for="selectDestino" class="text-white">DESTINO*</label>
+                  <!-- <select id="selectDestino" class="form-control" [disabled]="disableDestino"
+                                        (ngModelChange)="onChangeDestino($event)" formControlName="destino" required>
+                                        <option value="" selected hidden>Seleccionar</option>
+                                        <option *ngFor="let destino of destinos" [ngValue]="destino">
+                                            {{ destino }}</option>
+                                    </select> -->
+                  <!-- <ngx-select-dropdown (change)="onChangeDestino($event)" formControlName="destino"
+                                        [multiple]="false" [config]="configDestino" [options]="destinos"
+                                        class="mySelectDropdown form-control">
+                                    </ngx-select-dropdown> -->
+
+                  <mat-form-field class="example-full-width form-control">
+                    <input
+                      type="text"
+                      aria-label="Number"
+                      matInput
+                      formControlName="destino"
+                      [matAutocomplete]="auto2"
+                    />
+                    <mat-autocomplete
+                      #auto2="matAutocomplete"
+                      (optionSelected)="onChangeDestino($event.option.value)"
+                    >
+                      <mat-option
+                        *ngFor="let destino of destinosFiltrados | async"
+                        [value]="destino"
+                      >
+                        {{ destino }}
+                      </mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+
+                  <small
+                    class="text-danger"
+                    *ngIf="
+                      tripForm.get('destino').errors &&
+                      (tripForm.get('destino').dirty ||
+                        tripForm.get('destino').touched)
+                    "
+                    i18n
+                    >*Este campo es requerido</small
+                  >
+                </div>
+                <!-- <div class="col-sm-12 col-md-4 col-lg-2 form-group">
+                                    <label for="inputCantidad" class="text-white">PASAJEROS*</label>
+                                    <input type="number" min="1" id="inputCantidad" class="form-control"
+                                        formControlName="cantidad" required>
+                                    <small class="text-danger"
+                                        *ngIf="tripForm.get('cantidad').errors && (tripForm.get('cantidad').dirty || tripForm.get('cantidad').touched)" i18n>*Este
+                                        campo es requerido</small>
+                                </div> -->
+                <div class="col-sm-12 col-md-4 col-lg-2 form-group">
+                  <label for="inputDateIda" class="text-white" i18n
+                    >FECHA IDA*</label
+                  >
+                  <!-- <input type="date" id="inputDateIda" class="form-control" min="{{ fechaMinimaIda }}"
+                                        max="{{ fechaMaxIda }}" formControlName="ida" required
+                                        [attr.disabled]="disableFechaIda" (ngModelChange)="onChangeFechaIda($event)"> -->
+                  <div style="display: inline-flex">
+                    <input
+                      matInput
+                      [matDatepicker]="pickerIda"
+                      class="form-control campoFecha"
+                      (dateInput)="onChangeFechaIda($event)"
+                      [matDatepickerFilter]="dateFilterIda"
+                      (dateChange)="onChangeFechaIda($event)"
+                      [min]="fechaMinimaIda"
+                      [max]="fechaMaxIda"
+                      [disabled]="disableFechaIda"
+                      style="
+                        background-color: #e9edf4;
+                        padding: 0.375rem 0.75rem;
+                      "
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerIda"
+                      style="background-color: #e9edf4; border-radius: 0.25rem"
+                    >
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerIda></mat-datepicker>
+                  </div>
+                  <small
+                    class="text-danger"
+                    *ngIf="
+                      tripForm.get('ida').errors &&
+                      (tripForm.get('ida').dirty || tripForm.get('ida').touched)
+                    "
+                    i18n
+                    >*Este campo es requerido</small
+                  >
+                </div>
+                <div class="col-sm-12 col-md-4 col-lg-2 form-group">
+                  <label for="inputDateVuelta" class="text-white" i18n
+                    >FECHA VUELTA</label
+                  >
+                  <!-- <input type="date" id="inputDateVuelta" class="form-control"
+                                        [attr.disabled]="disableFechaVuelta" min="{{ fechaMinimaVuelta }}"
+                                        max="{{ fechaMaxVuelta }}" formControlName="vuelta"> -->
+                  <div style="display: inline-flex">
+                    <input
+                      matInput
+                      [matDatepicker]="pickerVuelta"
+                      class="form-control campoFecha"
+                      (dateInput)="onChangeFechaVuelta($event)"
+                      (dateChange)="onChangeFechaVuelta($event)"
+                      [min]="fechaMinimaVuelta"
+                      [max]="fechaMaxVuelta"
+                      [disabled]="disableFechaVuelta"
+                      style="
+                        background-color: #e9edf4;
+                        padding: 0.375rem 0.75rem;
+                      "
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="pickerVuelta"
+                      style="background-color: #e9edf4; border-radius: 0.25rem"
+                    >
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #pickerVuelta></mat-datepicker>
+                  </div>
+                </div>
+                <div
+                  class="col-sm-12 col-md-4 col-lg-2 form-group align-center"
+                >
+                  <label for="boton">&nbsp;</label>
+                  <button
+                    type="submit"
+                    id="boton"
+                    class="btn btn-warning p-2 col-12"
+                    [disabled]="!tripForm.valid"
+                  >
+                    <h5 i18n><i class="ri-search-line"></i>BUSCAR VIAJES</h5>
+                  </button>
+                </div>
+              </form>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <img class="card-img-top img-fluid p-2 imgcity" src="assets/images/bogota.jpg" alt="Card image cap">
+          <div class="card-body cardmax">
+            <h4 class="card-title">Bogotá</h4>
+            <p class="card-text">Puedes viajar hoy a Bogotá y conocer todos los sitios turisticos que esta ciudad tiene para ti</p>
+            <button type="button" class="btn btn-danger">Comprar tiquete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <img class="card-img-top img-fluid p-2 imgcity" src="assets/images/medellin.jpg" alt="Card image cap" height="200" >
+          <div class="card-body cardmax">
+            <h4 class="card-title">Medellín</h4>
+            <p class="card-text">El clima y la gente de Medellín está esperando por ti, visita ahora la ciudad de la eterna primavera</p>
+            <button type="button" class="btn btn-danger">Go somewhere</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <img class="card-img-top img-fluid p-2 imgcity" src="assets/images/discounts.png" alt="Card image cap">
+          <div class="card-body cardmax">
+            <h4 class="card-title">Descuentos del 15%</h4>
+            <p class="card-text">Tenemos descuentos especiales con nuestro codigo especial ENBUSMELLEVA en todos los trayectos</p>
+            <button type="button" class="btn btn-danger">Utilizar cupón</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-12">
+      <div class="card">
+        <div class="card-content">
+          <img class="card-img-top img-fluid p-2 imgcity" src="assets/images/metrobus.jpg" alt="Card image cap">
+          <div class="card-body cardmax">
+            <h4 class="card-title">Buses</h4>
+            <p class="card-text">Contamos con diferentes tipos de buses y servicios los cuales se acomodarán a tus necesidades</p>
+            <button type="button" class="btn btn-danger">Comprar tiquete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-12">
+      <div class="card">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left payments">
+                <h3 class="mb-4 primary text-center titlepayment">Métodos de pago</h3>
+                <div class="boxpayment">
+                  <button class="btnpayment" *ngFor="let btn of paymentsMethod">
+                    <img [src]="btn" alt="logo-payment">
+                  </button>
+                </div>
+
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-life-buoy primary font-large-2 float-right"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

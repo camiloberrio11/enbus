@@ -1,0 +1,38 @@
+<section id="testimonios">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/" i18n>Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a routerLink="/perfil" i18n>Compañía</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page" i18n>
+                            Testimonios
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-group">
+                    <div class="col-sm-6 col-lg-4" *ngFor="let testimonio of testimonios">
+                        <div class="card iq-card iq-mb-3">
+                            <div class="card-body text-justify">
+                                <button class="btn btn-outline-primary rounded-pill mb-3" disabled>
+                                    <i class="card-title ri-double-quotes-l" style="font-size: x-large;"></i>
+                                </button>
+                                <p class="card-text">{{ testimonio.testimonio }}</p>
+                                <h5 class="text-primary">{{ testimonio.persona }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

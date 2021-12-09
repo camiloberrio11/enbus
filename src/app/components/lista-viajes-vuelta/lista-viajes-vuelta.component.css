@@ -1,0 +1,63 @@
+.loader {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #f05a24;
+    border-bottom: 10px solid #f05a24;
+    width: 80px;
+    height: 80px;
+    -webkit-animation: spin 1s linear infinite;
+    /* Safari */
+    animation: spin 1s linear infinite;
+}
+
+.silla-disponible {
+    position: relative;
+}
+
+.silla-ocupada {
+    position: relative;
+}
+.silla-reservada {
+    position: relative;
+}
+
+.silla-disponible .numero-silla {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+}
+
+.silla-ocupada .numero-silla {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+}
+.silla-reservada .numero-silla {
+    color: white !important;
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    right: 20%;
+}
+
+/* Safari */
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

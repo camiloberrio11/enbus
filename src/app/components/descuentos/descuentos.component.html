@@ -1,0 +1,22 @@
+<section id="descuentos">
+    <div class="container">
+
+        <div class="row card-group">
+            <div class="col-sm-12 col-md-6 col-lg-4" *ngFor="let descuento of descuentos; let indice1 = index">
+                <div class="card iq-card">
+                    <div class="iq-card-body col-lg-12">
+                        <h3 class="iq-card-title">{{ descuento.nombre }}</h3>
+                        <div class="text-center">
+                            <img [src]="getSecureUrl(indice1)" class="w-50" alt="descuento">
+                        </div>
+                        <hr>
+                        <div *ngFor="let info of descuento.informacion; let indice2 = index">
+                            <div [innerHtml]="getContent(indice1, indice2)"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,44 @@
+<section class="sign-in-page">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <!-- <div class="col-sm-12 text-center">
+                <div class="sign-in-detail text-white" style="background-size: cover;">
+                    <a class="sign-in-logo">
+                        <img src="assets/images/logo_completo.png" class="img-fluid" alt="logo">
+                    </a>
+                </div>
+            </div> -->
+            <div class="col-sm-12 row align-self-center">
+                <div class="col-sm-0 col-md-2 col-lg-3"></div>
+                <div class="col-sm-12 col-md-8 col-lg-6 iq-card">
+                    <div class="sign-in-from iq-card-body" style="padding-top: 2em;">
+                        <h1 class="mb-0 card-title">Ingreso</h1>
+                        <p>Por favor suministra la siguiente informacion para continuar.</p>
+                        <form [formGroup]="loginForm" class="mt-4" (ngSubmit)="onSubmit()">
+                            <div class="form-group">
+                                <label for="usuariofield">usuario</label>
+                                <input formControlName="username" type="text" class="form-control mb-0" id="usuariofield" placeholder="Usuario">
+                            </div>
+                            <div class="form-group">
+                                <label for="contrasenafield">Contraseña</label>
+                                <input formControlName="password" type="password" class="form-control mb-0" id="contrasenafield"
+                                    placeholder="Contraseña">
+                            </div>
+                            <!-- <div class="d-inline-block w-100">
+                                <a href="/login" i18n>Olvidaste tu contraseña?</a>
+                                <button type="submit" class="btn btn-primary float-right" i18n>Ingresar</button>
+                            </div> -->
+                            <div class="sign-info">
+                                <span class="dark-color d-inline-block line-height-2" i18n>No tienes una cuenta?
+                                    <a routerLink="/registro">Registrate aquí</a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+                <div class="col-sm-0 col-md-2 col-lg-3"></div>
+            </div>
+        </div>
+    </div>
+</section>

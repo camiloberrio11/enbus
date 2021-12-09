@@ -1,0 +1,77 @@
+<section id="historia">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/" i18n>Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a routerLink="/perfil" i18n>Compañía</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page" i18n>
+                            Historia
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card iq-card mb-3">
+                    <div class="card-body">
+                        <h3 class="card-title" i18n>
+                            QUIERES SABER MÁS SOBRE FLOTA OSPINA?
+                        </h3>
+                        <p style="text-align: justify;">{{ historia }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-group">
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card iq-card">
+                            <div class="card-body">
+                                <h3 class="card-title" i18n>Flota Ospina en la historia</h3>
+                                <div>
+                                    <ol class="iq-timeline">
+                                        <li *ngFor="let acontecimiento of acontecimientos">
+                                            <div class="timeline-dots border-warning"></div>
+                                            <h5 class="float-left mb-1">{{ acontecimiento.fecha }}</h5>
+                                            <div class="d-inline-block w-100 text-justify">
+                                                <span>{{ acontecimiento.descripcion }}</span>
+                                            </div>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6">
+                        <div class="card iq-card">
+                            <div class="card-body">
+                                <h3 class="card-title" i18n>Premios y Reconocimientos
+                                    <span class="text-primary">
+                                        Flota Ospina
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="card-group">
+                            <div class="col-sm-4" *ngFor="let premio of premios">
+                                <div class="card iq-card">
+                                    <div class="card-body">
+                                        <img class="img-thumbnail" src="{{ premio.imagen }}" alt="{{ premio.nombre }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

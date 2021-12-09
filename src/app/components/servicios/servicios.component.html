@@ -1,0 +1,90 @@
+<section id="servicios">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card iq-card mb-3">
+                    <div class="iq-card-body">
+                        <h3 *ngIf="isMobileResolution == false" i18n>
+                            Flota Ospina te acompaña a donde lo necesites
+                        </h3>
+                        <h4 *ngIf="isMobileResolution == true" i18n>
+                            Flota Ospina te acompaña a donde lo necesites
+                        </h4>
+                        <h4 *ngIf="isMobileResolution == false" i18n>
+                            Podemos hacer expresos a todo el país con planillas de viaje ocasional, para cotizar
+                            ponte en contacto
+                            <li>
+                                <i class="ri-phone-line text-primary"></i>
+                                call center 314 888 2781
+                            </li>
+                            <li>
+                                <i class="ri-phone-line text-primary"></i>
+                                (+57) 6 882 6161
+                            </li>
+                            <li>
+                                <i class="ri-mail-line text-primary"></i>
+                                info@flotaospina.com
+                            </li>
+                        </h4>
+                        <b *ngIf="isMobileResolution == true">
+                            Podemos hacer expresos a todo el país con planillas de viaje ocasional, para cotizar
+                            ponte en contacto
+                            <li>
+                                <i class="ri-phone-line text-primary"></i>
+                                call center 314 888 2781
+                            </li>
+                            <li>
+                                <i class="ri-phone-line text-primary"></i>
+                                (+57) 6 882 6161
+                            </li>
+                            <li>
+                                <i class="ri-mail-line text-primary"></i>
+                                info@flotaospina.com
+                            </li>
+                        </b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card iq-card mb-3">
+                    <div class="iq-card-body">
+                        <h3 class="iq-card-title" i18n>
+                            RUTAS Y TARIFAS
+                        </h3>
+                        <nav>
+                            <h5 i18n>*Los horarios y precios pueden sufrir cambios sin previo aviso</h5>
+                        </nav>
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" i18n>Ruta</th>
+                                        <th scope="col" i18n>Horarios</th>
+                                        <th scope="col" i18n>Precio</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let ruta of rutas">
+                                        <td>{{ ruta.ruta }}</td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td *ngFor="let hora of ruta.horarios">
+                                                        {{ hora }}
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td>{{ ruta.precio }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

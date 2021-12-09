@@ -1,0 +1,49 @@
+.cookie-banner {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    align-content: center;
+}
+
+.cookie-banner .cookie-content {
+    width: 80%;
+    margin: auto;
+    background-color: #ffffff;
+}
+
+.my-float-button-whatsapp {
+    position: fixed;
+    right: 1rem;
+    bottom: 4.5rem;
+    z-index: 99;
+    background: #25D366;
+    color: #ffffff;
+
+    border: 0 !important;
+    border-radius: 100px !important;
+    padding: 0 0.7rem 0 1rem;
+    margin: 0;
+    font-size: xx-large;
+    height: 50px;
+    width: auto;
+}
+
+.my-float-button-whatsapp .icono {
+    left: 35%;
+}
+
+.my-float-button-menu {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 1rem;
+    z-index: 2;
+    color: #858d99;
+    background: #ffffff;
+    font-size: x-large;
+}
+
+.bckg {
+  background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)), url('/assets/images/seats.jpg');
+  background-size: cover;
+  height: 100%;
+}

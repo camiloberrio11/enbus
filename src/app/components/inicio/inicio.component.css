@@ -1,0 +1,59 @@
+.mySelectDropdown {
+    background: transparent !important;
+    color: white !important;
+    padding: 0;
+}
+
+.campoFecha {
+    width: 75%;
+}
+
+
+.enbus {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+
+.ibes {
+  background-color:#f05a24 ;
+  border-radius: 20px;
+}
+
+
+.imgcity {
+  min-height: 200px;
+  max-height: 200px;
+
+}
+.btnpayment {
+  flex: 1 1 auto;
+  margin: 2px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+.btnpayment img {
+  width: 70px;
+  height: 45px;
+}
+
+.boxpayment {
+  display: flex;
+}
+
+.card{
+  border-radius: 15px;
+}
+
+.titlepayment {
+  color: #f05a24;
+  font-weight: bold;
+}
+
+
+.payments {
+  overflow-x: scroll;
+}

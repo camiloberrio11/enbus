@@ -1,0 +1,88 @@
+<section id="perfil">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-lg-6">
+                <div class="card iq-card">
+                    <div class="iq-card-body">
+                        <h3 class="iq-card-title">Informacion de usuario</h3>
+                        <form [formGroup]="userForm" (ngSubmit)="guardar()">
+
+                            <div class="form-group row">
+                                <label for="username" class="control-label col-3 align-self-center">Usuario</label>
+                                <div class="col-9">
+                                    <input type="text" id="username" placeholder="Usuario" formControlName="usuario"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="firstName" class="control-label col-3 align-self-center">Nombre</label>
+                                <div class="col-9">
+                                    <input type="text" id="firstName" placeholder="Nombre" formControlName="nombre"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastName" class="control-label col-3 align-self-center">Apellidos</label>
+                                <div class="col-9">
+                                    <input type="text" id="lastName" placeholder="Apellidos" formControlName="apellidos"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="documento" class="control-label col-3 align-self-center">Documento</label>
+                                <div class="col-9">
+                                    <input type="text" id="documento" placeholder="Documento"
+                                        formControlName="documento" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="telefono" class="control-label col-3 align-self-center">Telefono</label>
+                                <div class="col-9">
+                                    <input type="text" id="telefono" placeholder="Telefono" formControlName="telefono"
+                                        class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="correo" class="control-label col-3 align-self-center">Correo</label>
+                                <div class="col-9">
+                                    <input type="text" id="correo" placeholder="Correo" formControlName="correo"
+                                        class="form-control">
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="row d-flex justify-content-around">
+                            <button class="btn btn-primary col-10" (click)="editarUsuario()" *ngIf="editar == false">
+                                <i class="ri-user-settings-line"></i> Editar
+                            </button>
+                            <button class="btn btn-success col-4" type="submit" *ngIf="editar == true">
+                                <i class="ri-user-follow-line"></i> Guardar
+                            </button>
+                            <button class="btn btn-danger col-4" (click)="cancelar()" *ngIf="editar == true">
+                                <i class="ri-close-circle-line"></i> Cancelar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6">
+                <div class="card iq-card">
+                    <div class="iq-card-body">
+                        <h3 class="iq-card-title">Tus viajes</h3>
+                    </div>
+                </div>
+                <div class="card-group">
+                    <div class="col-12" *ngFor="let viaje of viajes; let indice = index">
+                        <div class="card iq-card">
+                            <div class="iq-card-body">
+                                <h4 class="iq-card-title">Viaje {{ indice }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

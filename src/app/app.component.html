@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <app-header></app-header>
+  <div
+    id="content-page"
+    class="content-page"
+    [ngClass]="route?.includes('inicio') ? 'bckg' : ''"
+  >
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <a href="https://api.whatsapp.com/send?phone={{ numero }}&text={{ mensaje }}" type="button"
+        class="my-float-button-whatsapp shadow btn">
+        <i class="ri-whatsapp-line icono"></i>
+    </a> -->
+</div>
+<app-footer></app-footer>
+
+<!-- Wrapper END -->
+<!-- Footer -->
+
+<!-- Footer END -->

@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="6e415d78ec23c63c69c77bacf9431b0ad9effa5b" datatype="html">
+        <source>EL PÚBLICO OPINA, MEJOR ES FLOTA OSPINA</source>
+        <target>EL PÚBLICO OPINA, MEJOR ES FLOTA OSPINA</target>
+      </trans-unit>
+      <trans-unit id="f7d409a4dcaa0baf0f38039c0c84f24dfc591c7e" datatype="html">
+        <source>ORIGEN*</source>
+      <target>ORIGIN*</target>
+      </trans-unit>
+      <trans-unit id="28a0965237453fa9fc0f88e91af1335c57ee2636" datatype="html">
+        <source>*Este campo es requerido</source>
+      <target>*Required</target>
+      </trans-unit>
+      <trans-unit id="30802c9513386013c1ff4ab5a86de5e9516f1c46" datatype="html">
+        <source>DESTINO*</source>
+      <target>DESTINATION*</target>
+      </trans-unit>
+      <trans-unit id="180c9edb4409e06c4612ee321228ba6a439bd75c" datatype="html">
+        <source>PASAJEROS*</source>
+      <target>PASSENGERS*</target>
+      </trans-unit>
+      <trans-unit id="b62484409636604cca708cfbcfd144c328d44d8f" datatype="html">
+        <source>FECHA IDA*</source>
+      <target>DEPART*</target>
+      </trans-unit>
+      <trans-unit id="2a3a297f4af39ab951157c5f6437090f985ece59" datatype="html">
+        <source>FECHA VUELTA</source>
+      <target>RETURN</target>
+      </trans-unit>
+      <trans-unit id="e5c67955a6774669888465e97b1bfa9e85ef7c50" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          BUSCAR VIAJES
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          SEARCH
+        </target>
+      </trans-unit>
+      <trans-unit id="020eba4b512191278cf2194cf4b55e04da825ff2" datatype="html">
+        <source>
+          Una empresa tradicional de transporte de pasajeros por carretera que hace
+          sus mayores esfuerzos por ofrecer un servicio cómodo, seguro y eficiente a
+          través de su personal calificado y equipos modernos, nos importa la opinión
+          de nuestros usuarios.
+        </source>
+        <target>
+          A traditional road passenger transport company that makes its best efforts to
+          offer a comfortable, safe and efficient service through its qualified personnel
+          and modern equipment, we care about the opinion of our users.
+        </target>
+      </trans-unit>
+      <trans-unit id="610439ab40ffe9a6099a615708faf9007f95619d" datatype="html">
+        <source>NUESTROS SERVICIOS</source>
+        <target>OUR SERVICES</target>
+      </trans-unit>
+      <trans-unit id="50d4550bff5658d2bab700537108b01142b82701" datatype="html">
+        <source>Transporte de pasajeros</source>
+        <target>Passenger transport</target>
+      </trans-unit>
+      <trans-unit id="de73f71f790566ffa0127b0eed2de5c543b6ab1a" datatype="html">
+        <source>Encomiendas</source>
+        <target>Parcel sipping</target>
+      </trans-unit>
+      <trans-unit id="1dd1851ec060640bf73c3090a920cb0bcd696199" datatype="html">
+        <source>Call center unificado</source>
+        <target>Unified call center</target>
+      </trans-unit>
+      <trans-unit id="960a90405f46bb5fb7456351641b5d0215039ed6" datatype="html">
+        <source>Lista de espera</source>
+        <target>Waiting list</target>
+      </trans-unit>
+      <trans-unit id="e45c0175e447921a4198d4818cd43fa7f191008d" datatype="html">
+        <source>Reservas</source>
+        <target>Reservations</target>
+      </trans-unit>
+      <trans-unit id="f4a3b4766644cb950a64353836303ef6afe5fa52" datatype="html">
+        <source>Compras online</source>
+        <target>Online purchases</target>
+      </trans-unit>
+      <trans-unit id="8c6f5425b6da96301064efa37ff445b06dfab7a4" datatype="html">
+        <source>Años de experiencia</source>
+        <target>Experience years</target>
+      </trans-unit>
+      <trans-unit id="64504d52477e6345118fd864ba0104313c17ce8a" datatype="html">
+        <source>Rutas acreditadas</source>
+        <target>Accredited routes</target>
+      </trans-unit>
+      <trans-unit id="e8af66ab7126a77410b6e8b2bfab6f86590867b3" datatype="html">
+        <source>Ciudades</source>
+        <target>Cities</target>
+      </trans-unit>
+      <trans-unit id="22b6580bf0729bc9eea30c6d1bcd3e350223b500" datatype="html">
+        <source>ENCUESTA DE SATISFACCION</source>
+        <target>SATISFACTION SURVEY</target>
+      </trans-unit>
+      <trans-unit id="d9e49c32db5cac1d581287038b9f65e38c5f6da7" datatype="html">
+        <source>GALERÍA</source>
+        <target>GALLERY</target>
+      </trans-unit>
+      <trans-unit id="5c539bff3b75145e539720fc572160fe743e95b7" datatype="html">
+        <source>PREGUNTAS FRECUENTES</source>
+        <target>FREQUENT ASKED QUESTIONS</target>
+      </trans-unit>
+      <trans-unit id="b3bf0bfa2a89955146c165f205b5ebe789970903" datatype="html">
+        <source>Ver mas preguntas
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+        </source>
+        <target>More
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="eeaa96e1f42ddcdc7aa63f9e0e516b62d6175de4" datatype="html">
+        <source>LO QUE DICEN DE NOSOTROS</source>
+        <target>WHAT PEOPLE SAY ABOUT US</target>
+      </trans-unit>
+      <trans-unit id="ff67dfd4f2b35b572391a10ebafef0c3b1f8fb9b" datatype="html">
+        <source>Experiencia y responsabilidad en la que puede confiar</source>
+        <target>Expirience and responsability that you can trust</target>
+      </trans-unit>
+      <trans-unit id="f08ae9f960b2c54ae5a5fcc5289a7a2014dcd04e" datatype="html">
+        <source>Leer más testimonios</source>
+        <target>Read more</target>
+      </trans-unit>
+      <trans-unit id="9c76b2ce38506defbf24a7187be84cec9a8a7fe4" datatype="html">
+        <source>Vigilado por</source>
+        <target>Supervised by</target>
+      </trans-unit>
+      <trans-unit id="2dfc96f15c70dbc67d555b7546d597eaedc77242" datatype="html">
+        <source>Ubícanos en</source>
+        <target>Find us at</target>
+      </trans-unit>
+      <trans-unit id="2626bb71323ab2196166595af10af8f93761f1fd" datatype="html">
+        <source>Lineas de atención</source>
+        <target>Atention lines</target>
+      </trans-unit>
+      <trans-unit id="0e651f30422ad546838ebefa47831256efc77ef3" datatype="html">
+        <source>Vigilado por</source>
+        <target>Supervised by</target>
+      </trans-unit>
+      <trans-unit id="513712fc8afe18442de0bea4af4721c1910198ba" datatype="html">
+        <source>Politica de privacidad</source>
+        <target>Privacy policy</target>
+      </trans-unit>
+      <trans-unit id="eb77bf92c66422e53d54a6b880903c90fce99e2a" datatype="html">
+        <source>Terminos de uso</source>
+        <target>Terms of use</target>
+      </trans-unit>
+      <trans-unit id="45a4b797ab6931fb10ed4ad33c49a77582db3db8" datatype="html">
+        <source>Inicio</source>
+        <target>Home</target>
+      </trans-unit>
+      <trans-unit id="6690de4a595aca0b6f70ca56645f879ec93ddbcc" datatype="html">
+        <source>Compañia</source>
+        <target>Company</target>
+      </trans-unit>
+      <trans-unit id="40474e657728c6946a751b2ac7d744d1d2b146c9" datatype="html">
+        <source>Perfil</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="4c8a87e00724d287275d9321b05d3bf5ae3ad6c8" datatype="html">
+        <source>Historia</source>
+        <target>History</target>
+      </trans-unit>
+      <trans-unit id="e9ae9a218c0fc2e387bd9259a21203ee2a5a1bab" datatype="html">
+        <source>Testimonios</source>
+        <target>Testimonials</target>
+      </trans-unit>
+      <trans-unit id="1d257b31cf93fc72f9b6c3aa5dc58487dba9592b" datatype="html">
+        <source>Preguntas frecuentes</source>
+        <target>Frequent asked questions</target>
+      </trans-unit>
+      <trans-unit id="107410d6772194ee43c4472e85a38f5042aced31" datatype="html">
+        <source>Rutas y tarifas</source>
+        <target>Routes and fares</target>
+      </trans-unit>
+      <trans-unit id="b0c0d2662ced091e5b6d6e194840aa20dabc840e" datatype="html">
+        <source>Documentos de interes</source>
+        <target>Interest documents</target>
+      </trans-unit>
+      <trans-unit id="174aaea03d030588ca02b67d9586685361215369" datatype="html">
+        <source>Contacto</source>
+        <target>Contact</target>
+      </trans-unit>
+      <trans-unit id="6baf606a86220a06857782c39d216dd067d321e4" datatype="html">
+        <source>COVID-19</source>
+        <target>COVID-19</target>
+      </trans-unit>
+      <trans-unit id="44ebca9b9590c50214044c5c68485bf538723da6" datatype="html">
+        <source>Obligaciones del pasajero</source>
+        <target>Passenger musts</target>
+      </trans-unit>
+      <trans-unit id="286d5f5b7fb5e01985e4f35326970a4060bd5950" datatype="html">
+        <source>Formulario de inscripción</source>
+        <target>Inscription survey</target>
+      </trans-unit>
+      <trans-unit id="031d789e16e02a08ed14bda84b0fdff1e28f8138" datatype="html">
+        <source>Viaje</source>
+        <target>Trip</target>
+      </trans-unit>
+      <trans-unit id="c3e913c185f3df41123d728df7becc550f98ca5e" datatype="html">
+        <source>Asientos</source>
+        <target>Seats</target>
+      </trans-unit>
+      <trans-unit id="984319757ce4f277a44aa5a15a5b132acc830f9c" datatype="html">
+        <source>Pago</source>
+        <target>Payment</target>
+      </trans-unit>
+      <trans-unit id="f8718ba083596c8ea83635f5b1cc0b041c6e8c5b" datatype="html">
+        <source>Viaje Ida</source>
+        <target>Departure trip</target>
+      </trans-unit>
+      <trans-unit id="fb1fc58219d4a1c156dbb0694153bbad2d8f9b8d" datatype="html">
+        <source>Viaje Vuelta</source>
+        <target>Return trip</target>
+      </trans-unit>
+      <trans-unit id="0bc7fda71bbee818d4fe73d3200507a6aacac898" datatype="html">
+        <source>RESUMEN DE VIAJE</source>
+        <target>TRIP SUMMARY</target>
+      </trans-unit>
+      <trans-unit id="8b9a5cd92d4a8011c1c36310f10dcebee1650682" datatype="html">
+        <source>Origen</source>
+        <target>Origin</target>
+      </trans-unit>
+      <trans-unit id="525a896b2ee4b31dd5f7c3a8134511738568a9d4" datatype="html">
+        <source>Destino</source>
+        <target>Destination</target>
+      </trans-unit>
+      <trans-unit id="b173ec5192470d6b2da768338bc24a965d7e001c" datatype="html">
+        <source>Fecha</source>
+        <target>Date</target>
+      </trans-unit>
+      <trans-unit id="3879c21ac1f5ddb0c4724d2b891054f32eb8df3b" datatype="html">
+        <source>Hora</source>
+        <target>Time</target>
+      </trans-unit>
+      <trans-unit id="e64f5216537942908d0499b08ae75903724aa4cd" datatype="html">
+        <source>Servicio</source>
+        <target>Service</target>
+      </trans-unit>
+      <trans-unit id="9653ca6963e9d3d7de800fcefe2b6e638e0daad4" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          ORIGEN
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          ORIGIN
+        </target>
+      </trans-unit>
+      <trans-unit id="c8f602b86f694bc2af79037d285b9fa48b6487ed" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DESTINO
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DESTINATION
+        </target>
+      </trans-unit>
+      <trans-unit id="bb5c8256e8fe9b439a7e9af5cced46c8d19325e6" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          FECHA
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DATE
+        </target>
+      </trans-unit>
+      <trans-unit id="fb4278d65f3c01df3e6d2b7dd9944055014bd9d8" datatype="html">
+        <source>HORA</source>
+        <target>TIME</target>
+      </trans-unit>
+      <trans-unit id="e509fdc7d210b84ad11b4e56c7cef4a91a961bbe" datatype="html">
+        <source>SERVICIO</source>
+        <target>SERVICE</target>
+      </trans-unit>
+      <trans-unit id="37c245664e6131bd1be5ca2f08d346c9af69bf4c" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DESDE
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          VALUE
+        </target>
+      </trans-unit>
+      <trans-unit id="91285d2ec1c4881dc3d3625168fb89c50e441a64" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          Seleccionar
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          Select
+        </target>
+      </trans-unit>
+      <trans-unit id="b57dbc34e1d5e9477996358d29504f60e3c8575b" datatype="html">
+        <source>MAPA DE ASIENTOS</source>
+        <target>SEATMAP</target>
+      </trans-unit>
+      <trans-unit id="8694462d55bd043a946b85f19d71cadd52702395" datatype="html">
+        <source>PISO 1</source>
+        <target>1st FLOOR</target>
+      </trans-unit>
+      <trans-unit id="563932a6a661ea2b533b4647056d74943a77f9bc" datatype="html">
+        <source>PISO 2</source>
+        <target>2nd FLOOR</target>
+      </trans-unit>
+      <trans-unit id="1082accd3ecaa06b7c3155691c77f10ac5ea006d" datatype="html">
+        <source>Conductor</source>
+        <target>Front</target>
+      </trans-unit>
+      <trans-unit id="ecd9d63a90ef530b32ef79f4106c9f91abb72257" datatype="html">
+        <source>Atras</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="8b3afd1a5b567549777fb6e6698ce5df222c2ea1" datatype="html">
+        <source>Siguiente</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="91a8a2258d1bde0652282dd612b7dadf3be892ba" datatype="html">
+        <source>Informacion pasajero</source>
+        <target>Passenger info</target>
+      </trans-unit>
+      <trans-unit id="4e2af945f3a8068ad6e97ae987d146e5f6d96260" datatype="html">
+      <source>
+        Puesto: <x id="INTERPOLATION" equiv-text="{{ client.index }}"/>
+      </source>
+      <target>
+        Seat: <x id="INTERPOLATION" equiv-text="{{ client.index }}"/>
+      </target>
+      </trans-unit>
+      <trans-unit id="c7a84d85ebcf8f84c6072492ed6ca195d52727bb" datatype="html">
+        <source>Seleccionar</source>
+        <target>Select</target>
+      </trans-unit>
+      <trans-unit id="95773299214bb5ced4ae91a15ed0042ea08a92ec" datatype="html">
+        <source>Terminos y condiciones</source>
+        <target>Terms and conditions</target>
+      </trans-unit>
+      <trans-unit id="2b1cc68edd2604ea55755cc77d9c1797bf2f92ef" datatype="html">
+        <source>Acepto el <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+        contrato de transporte.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>I accept the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+        Transport contract.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="46c713e7d2b8f6a61cebe829b3999cb369d60bb2" datatype="html">
+        <source>
+          Acepto las <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          políticas de desistimiento, retracto,
+          reintegro y cancelación.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>
+          I accept the  <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          withdrawal, refund and cancellation policies.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="d0fe7e6034c2b9aafc5c259aaec8a2368bafc5a8" datatype="html">
+        <source>
+          Garantizo que tengo los soportes requeridos por las autoridades y
+          me hago responsable en caso de que alguna autoridad los solicite antes,
+          durante y/o después del viaje.
+        </source>
+        <target>
+          I guarantee that I have the supports required by the authorities and I take
+          responsibility in the event that any authority requests them before, during
+          and / or after the trip.
+        </target>
+      </trans-unit>
+      <trans-unit id="a1f6f2293345f247b8a68fb3c64e1d98184e95f9" datatype="html">
+        <source>
+          Acepto los <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Terminos y condiciones COVID.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>
+          I accept the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          COVID terms and conditions.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="286d37139265bc96a057fbe369aae89962dab2ee" datatype="html">
+        <source>
+          Al hacer click en el boton de realizar compra aceptas y confirmas que leiste nuestra
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Política de privacidad y protección de datos<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+          , así como los <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Términos y condiciones generales.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>
+          By clicking the purchase button you accept and confirm that you have read our
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Privacy and data protection policy<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+          , as well as the <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          General Terms and conditions.<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="e5479a2fb3177fbaa33ce2ba110c3330b3d42940" datatype="html">
+        <source>Metodos de pago</source>
+        <target>Payment methods</target>
+      </trans-unit>
+      <trans-unit id="ac448cb3a13f16656ea585840b830b060671673e" datatype="html">
+        <source>RESUMEN DE COMPRA</source>
+        <target>PURCHASE SUMARY</target>
+      </trans-unit>
+      <trans-unit id="7788915f444e4cd01fa428972bba94fe00f7241b" datatype="html">
+        <source>Detalle</source>
+        <target>Details</target>
+      </trans-unit>
+      <trans-unit id="0cc07a38a2d5065d32cc7933f1aaf6d21d5e2c7c" datatype="html">
+        <source>Valor</source>
+        <target>Value</target>
+      </trans-unit>
+      <trans-unit id="0a5f2cd56e3c9226f89fa1f86fc26b89be7304af" datatype="html">
+        <source>REALIZAR COMPRA</source>
+        <target>PURCHASE</target>
+      </trans-unit>
+      <trans-unit id="6c81c990729363b074f2129e8d0a2e11b7bd45c8" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          FECHA
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DATE
+        </target>
+      </trans-unit>
+      <trans-unit id="d331087734ba75c50022d8859ac39f821acbb9e8" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          DESDE
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          FROM
+        </target>
+      </trans-unit>
+      <trans-unit id="a855a50c8ed13b72a2515c82821de2980997ae51" datatype="html">
+        <source>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          Seleccionar
+        </source>
+        <target>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          Select
+        </target>
+      </trans-unit>
+      <trans-unit id="9788517424421926eb79f599a2e1df83a9009c74" datatype="html">
+        <source>Atras</source>
+        <target>Back</target>
+      </trans-unit>
+      <trans-unit id="ed9c6b305a3071a7c8e3123fff5febce438949a2" datatype="html">
+        <source>Siguiente</source>
+        <target>Next</target>
+      </trans-unit>
+      <trans-unit id="5cbec597807e1ff5a7e654cfc54e3a3d2579ed0b" datatype="html">
+        <source>Flota Ospina te escucha</source>
+        <target>Flota Ospina listen to you</target>
+      </trans-unit>
+      <trans-unit id="df8522c5a6595e86e5d9798e360db8a6f4d1d4fa" datatype="html">
+        <source>
+          Si quieres ponerte en contacto con nosotros puedes diligenciar el siguiente
+          formato y nosotros te contactaremos tan pronto nos sea posible.
+        </source>
+        <target>
+          If you want to contact us you can fill out the following form and we will
+          contact you as soon as possible.
+        </target>
+      </trans-unit>
+      <trans-unit id="dd2a11ebc737589080ed400dacc33a8c8c84728b" datatype="html">
+        <source>Nombre</source>
+        <target>Name</target>
+      </trans-unit>
+      <trans-unit id="372facde1a72e3f82ac81cac6b81980dcdc1a7bd" datatype="html">
+        <source>Correo</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="7c38873769d52761357ee184abd9925abb88c695" datatype="html">
+        <source>Telefono</source>
+        <target>Phone</target>
+      </trans-unit>
+      <trans-unit id="38cc40c69774001dcc89ef3492d09f6ed47302e8" datatype="html">
+        <source>Mensaje</source>
+        <target>Message</target>
+      </trans-unit>
+      <trans-unit id="3c3307214bd2cd583e0ab6df1a2c440a4aedc422" datatype="html">
+        <source>ENVIAR MENSAJE</source>
+        <target>SEND MESSAGE</target>
+      </trans-unit>
+      <trans-unit id="5ade1181d325b7ae344f36476ef5d874357b02b2" datatype="html">
+        <source>Obligaciones del pasajero</source>
+        <target>Passengers musts</target>
+      </trans-unit>
+      <trans-unit id="a7a03489bf4d45efb1f0c7a8139f1d8133ab9110" datatype="html">
+        <source>Compañía</source>
+        <target>Company</target>
+      </trans-unit>
+      <trans-unit id="ad2832d04a8efcaadf31d2e81a18f0cfcb42bb4c" datatype="html">
+        <source>Preguntas frequentes</source>
+        <target>Frequent asked questions</target>
+      </trans-unit>
+      <trans-unit id="1e006dabd3c1dd4d3118136d06d7c58272762b3d" datatype="html">
+        <source>Historia</source>
+        <target>History</target>
+      </trans-unit>
+      <trans-unit id="f7f7c960adf0fb35b9ad632df35a5396cfe4c5c4" datatype="html">
+        <source>QUIERES SABER MÁS SOBRE FLOTA OSPINA?</source>
+        <target>WANT TO KNOW MORE ABAOUT FLOTA OSPINA?</target>
+      </trans-unit>
+      <trans-unit id="aef02f9a9ab6a1719dc0c949c026cc41e3181442" datatype="html">
+        <source>Flota Ospina en la historia</source>
+        <target>Flota Ospina across history</target>
+      </trans-unit>
+      <trans-unit id="a5f45a0a89e48081eb7f7c7846507992ac99299b" datatype="html">
+        <source>
+          Premios y Reconocimientos<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          Flota Ospina<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        </source>
+        <target>
+          Awards and honours<x id="START_TAG_SPAN" ctype="x-span" equiv-text="&lt;span&gt;"/>
+          Flota Ospina<x id="CLOSE_TAG_SPAN" ctype="x-span" equiv-text="&lt;/span&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="b656baff71f5e5ae3bf47410aecd76bc679e43a2" datatype="html">
+        <source>Perfil</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="6868b346c4d9a4faabee9804aed65efdedadc0c4" datatype="html">
+        <source>MISION</source>
+        <target>MISSION</target>
+      </trans-unit>
+      <trans-unit id="40eaef0735ff8399147e24b58221f982dd65e21c" datatype="html">
+        <source>VISION</source>
+        <target>VISION</target>
+      </trans-unit>
+      <trans-unit id="729ee49b127f686b3e7e01e2901fb39300a395d1" datatype="html">
+        <source>Flota Ospina te acompaña a donde lo necesites</source>
+        <target>Flota Ospina accompanies you wherever you need it</target>
+      </trans-unit>
+      <trans-unit id="1770926324c916ec711a07b237a18594717e8dae" datatype="html">
+        <source>
+          Podemos hacer expresos a todo el país con planillas de viaje ocasional, para cotizar
+          ponte en contacto
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          call center 314 888 2781
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          (+57) 6 882 6161
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT_1" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          info@flotaospina.com
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        </source>
+        <target>
+          We can make express to the whole country with occasional travel sheets,
+          to get a quote get in touch
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          call center 314 888 2781
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          (+57) 6 882 6161
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+          <x id="START_LIST_ITEM" ctype="x-li" equiv-text="&lt;li&gt;"/>
+          <x id="START_ITALIC_TEXT_1" ctype="x-i" equiv-text="&lt;i&gt;"/>
+          <x id="CLOSE_ITALIC_TEXT" ctype="x-i" equiv-text="&lt;/i&gt;"/>
+          info@flotaospina.com
+          <x id="CLOSE_LIST_ITEM" ctype="x-li" equiv-text="&lt;/li&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="c4af9a8a76de7ca6ae5ee90aa254b4339f3a70ce" datatype="html">
+        <source>RUTAS Y TARIFAS</source>
+        <target>ROUTES AND FARES</target>
+      </trans-unit>
+      <trans-unit id="2e51f5a9d0e0da375ed29a07700ea072ddd34a3a" datatype="html">
+        <source>*Los horarios y precios pueden sufrir cambios sin previo aviso</source>
+        <target>*Los horarios y precios pueden sufrir cambios sin previo aviso</target>
+      </trans-unit>
+      <trans-unit id="970fbf352ea8734c66e1ed36197a0169a990309e" datatype="html">
+        <source>Ruta</source>
+        <target>Ruta</target>
+      </trans-unit>
+      <trans-unit id="9476f53632a5c4995254e4b524b0473e39b0db3e" datatype="html">
+        <source>Horarios</source>
+        <target>Horarios</target>
+      </trans-unit>
+      <trans-unit id="d57ce960cceac0877b71d11a9931887f9c86ec73" datatype="html">
+        <source>Precio</source>
+        <target>Precio</target>
+      </trans-unit>
+      <trans-unit id="6a888c10ab2bba6dc806a16d57a97d79051cf6e7" datatype="html">
+        <source>Testimonios</source>
+        <target>Testimonios</target>
+      </trans-unit>
+      <trans-unit id="5f72abd3ae1000b98233678b0166adb498ea89a9" datatype="html">
+        <source>Ingreso</source>
+        <target>Ingreso</target>
+      </trans-unit>
+      <trans-unit id="1c698648152c27e5dd88befa6dd2ff3b9a4080b6" datatype="html">
+        <source>Por favor suministra la siguiente informacion para continuar.</source>
+        <target>Por favor suministra la siguiente informacion para continuar.</target>
+      </trans-unit>
+      <trans-unit id="2e4b22b81c3c88caa49df3e8628828453152edec" datatype="html">
+        <source>usuario</source>
+        <target>usuario</target>
+      </trans-unit>
+      <trans-unit id="e369e13629132e32dcd958b82261059243f21d58" datatype="html">
+        <source>Contraseña</source>
+        <target>Contraseña</target>
+      </trans-unit>
+      <trans-unit id="278017cbc78a2e1e93d64da2b948539b30009824" datatype="html">
+        <source>Olvidaste tu contraseña?</source>
+        <target>Olvidaste tu contraseña?</target>
+      </trans-unit>
+      <trans-unit id="66e9daee15cbf831a40b0f4c5df884ec139f710f" datatype="html">
+        <source>Ingresar</source>
+        <target>Ingresar</target>
+      </trans-unit>
+      <trans-unit id="4f4681700e478e25c12d9f9d93136677bf1a257b" datatype="html">
+        <source>No tienes una cuenta?
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Registrate aquí<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>Still don't have an account?
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Sign up here!<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="cf04f7c4d68523426a322308a940acf7a2d09b29" datatype="html">
+        <source>Registro</source>
+        <target>Sign up</target>
+      </trans-unit>
+      <trans-unit id="80e3c44f5da423dc25ae1e80789a015faae2ef69" datatype="html">
+        <source>Por favor suministra la siguiente información para registrarte.</source>
+        <target>Please submit the following information.</target>
+      </trans-unit>
+      <trans-unit id="3f2d25be6415a55c9e1a07a5f547847ca3353ba5" datatype="html">
+        <source>Nombre completo</source>
+        <target>Full name</target>
+      </trans-unit>
+      <trans-unit id="e9e588741024086a4b24d5db5da4f5c540a07f30" datatype="html">
+        <source>Correo electrónico</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="d3ccd311ca1f4b906e33203bc48ddfae5678a711" datatype="html">
+        <source>Acepto los
+            <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+            Términos y condiciones<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>I accept the
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Terms and conditions<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="35ad82bbaa7e8b24c1bdf03f3260422c5910a1fb" datatype="html">
+        <source>Aceptar</source>
+        <target>Ok</target>
+      </trans-unit>
+      <trans-unit id="d70f995d49fdd08ff899bbee93e99e3859aaaf70" datatype="html">
+        <source>Ya tienes una cuenta?
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Ingresa aquí<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </source>
+        <target>Already have an account?
+          <x id="START_LINK" ctype="x-a" equiv-text="&lt;a&gt;"/>
+          Sign in here!<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>
+        </target>
+      </trans-unit>
+      <trans-unit id="68d25096f93dd359783754961f4147c2d07aea0f" datatype="html">
+        <source>Buscar viajes</source>
+        <target>Search trips</target>
+      </trans-unit>
+      <trans-unit id="1fa63c758ffd3d5281473941637904cd0ad9a5d7" datatype="html">
+        <source>DESDE</source>
+        <target>FROM</target>
+      </trans-unit>
+      <trans-unit id="d000049eb3e237343518efdf109e08cee86fec49" datatype="html">
+        <source>Información</source>
+        <target>Info</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

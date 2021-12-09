@@ -1,0 +1,83 @@
+.my-float-button-facebook {
+    position: relative;
+    background: #3b5998;
+    font-size: medium;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.my-float-button-facebook .icono{
+    position: absolute;
+    color: #ffffff;
+    left: 25%;
+    top: 15%;
+}
+
+.my-float-button-twitter {
+    position: relative;
+    background: #00acee;
+    font-size: medium;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.my-float-button-twitter .icono{
+    position: absolute;
+    color: #ffffff;
+    left: 25%;
+    top: 15%;
+}
+
+.my-float-button-youtube {
+    position: relative;
+    background: #c4302b;
+    font-size: medium;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.my-float-button-youtube .icono{
+    position: absolute;
+    color: #ffffff;
+    left: 25%;
+    top: 15%;
+}
+
+.my-float-button-instagram {
+    position: relative;
+    background:#db1f96;
+    font-size: medium;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.my-float-button-instagram .icono{
+    position: absolute;
+    color: #ffffff;
+    left: 25%;
+    top: 15%;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  background: transparent;
+}
+
+
+.bklogo {
+  border-radius: 20px;
+      height: 65px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+}
+
+
+.mtop {
+  margin-top: 15px;
+}

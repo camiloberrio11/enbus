@@ -1,0 +1,344 @@
+<section id="datos-pasajero">
+  <div class="container">
+
+    <!-- PROGRESS BAR -->
+    <div class="row">
+      <div class="col-lg-12">
+        <ul id="progressbar" class="text-center">
+          <li class="step0 done" id="step1" i18n>Viaje</li>
+          <li class="step0 done" id="step2" i18n>Asientos</li>
+          <li class="step0 active" id="step3" i18n>Pago</li>
+        </ul>
+      </div>
+    </div>
+    <!-- PROGRESS BAR -->
+
+    <div class="row">
+      <div class="col-sm-12 col-lg-6">
+        <!-- INFO PASAJEROS -->
+        <div class="iq-accordion career-style faq-style">
+          <div class="iq-card iq-accordion-block" *ngFor="let client of clients; let indice = index">
+            <div class="active-faq clearfix">
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <a class="accordion-title">
+                      <h4>Pasajero puesto: {{ client.index }}</h4>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-details iq-card-body" [ngStyle]="{'display': indice == 0 ? 'block' : 'none' }">
+              <form class="form-horizontal" [formGroup]="myForm">
+                <div class="form-group row" *ngFor="let field of client.fields">
+                  <label class="control-label col-sm-4 align-self-center" [attr.for]="field.control">
+                    {{ field.label }}
+                  </label>
+                  <div class="col-sm-8">
+                    <input type="text" class="form-control" [formControl]="field.control"
+                      placeholder="{{ field.label }}" *ngIf="field.type == 'input'">
+                    <select class="form-control" [formControl]="field.control" *ngIf="field.type == 'select'">
+                      <option value="" disabled hidden>Seleccionar</option>
+                      <option *ngFor="let type of field.data" [value]="type.value">
+                        {{ type.text }}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- INFO PASAJEROS -->
+
+        <!-- INFO PAGO -->
+        <!-- <div class="col-sm-12"> -->
+        <div class="card iq-card">
+          <div class="card-body">
+            <h3 class="iq-card-title">Información de pago</h3>
+            <form class="form-horizontal" [formGroup]="formAutocomplete">
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="selectPasajero">
+                  Usar datos de:
+                </label>
+                <div class="col-sm-8">
+                  <select class="form-control" formControlName="autocomplete" id="selectPasajero"
+                    (change)="onChangePasajero($event.target.value)">
+                    <option value="" hidden>Seleccionar</option>
+                    <option [value]="cliente.documento" *ngFor="let cliente of getFormData()">{{ cliente.nombre }}
+                      {{ cliente.apellidos }}
+                    </option>
+                    <option value="otro">Otro</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+
+            <form class="form-horizontal" [formGroup]="formPago" *ngIf="datosPago == true">
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="tipodocpago">
+                  Tipo de documento
+                </label>
+                <div class="col-sm-8">
+                  <select id="tipodocpago" class="form-control" formControlName="tipodoc" required>
+                    <option value="" disabled hidden>Seleccionar</option>
+                    <option value="CC">Cedula de ciudadanía</option>
+                    <option value="CE">Cedula de extranjería</option>
+                    <option value="PS">Pasaporte</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="documentopago">
+                  Documento de identificación
+                </label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="documentopago" placeholder="Documento de identificación"
+                    formControlName="numerodoc" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="nombrepago">
+                  Nombre
+                </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="nombrepago" placeholder="Nombre" formControlName="nombre"
+                    required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="apellidospago">
+                  Apellidos
+                </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="apellidospago" placeholder="Apellidos"
+                    formControlName="apellidos" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="telefonopago">
+                  Teléfono
+                </label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="telefonopago" placeholder="Numero de teléfono"
+                    formControlName="telefono" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="correopago">
+                  Correo electrónico
+                </label>
+                <div class="col-sm-8">
+                  <input type="email" class="form-control" id="correopago" placeholder="Correo electrónico"
+                    formControlName="correo" required>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="control-label col-sm-4 align-self-center" for="checkNuevo">
+                  Crear usuario
+                </label>
+                <div class="col-sm-8">
+                  <input type="checkbox" id="checkNuevo" placeholder="Crear usuario" formControlName="checkNuevo"
+                    (click)="nuevoChange()">
+                </div>
+              </div>
+            </form>
+
+            <div *ngIf="checkNuevo == true">
+              <h3>Creación de usuario</h3>
+              <form class="form-horizontal" [formGroup]="formRegistro">
+                <div class="form-group row">
+                  <label class="control-label col-sm-4 align-self-center" for="username">
+                    Usuario
+                  </label>
+                  <div class="col-sm-8">
+                    <input type="email" class="form-control" id="username" placeholder="Nombre de usuario"
+                      formControlName="username" required>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label class="control-label col-sm-4 align-self-center" for="contraseña">
+                    Contraseña
+                  </label>
+                  <div class="col-sm-8">
+                    <input type="password" class="form-control" id="nombrepago" placeholder="Contraseña"
+                      formControlName="password" required>
+                  </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                  <button class="btn btn-warning w-75" (click)="registrarUsuario()">
+                    <h5><i class="ri-user-add-line"></i> Crear usuario</h5>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+        <!-- INFO PAGO -->
+
+      </div>
+
+      <div class="col-sm-12 col-lg-6">
+        <div class="card-group">
+
+          <div class="col-sm-12">
+
+            <!-- TYC -->
+            <div class="card iq-card">
+              <div class="iq-card-body">
+                <h3 class="iq-card-title" i18n>Términos y condiciones</h3>
+                <form [formGroup]="formChecks">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" formControlName="centroLogistica" required id="centro"
+                      class="custom-control-input">
+                    <label for="centro" class="custom-control-label">
+                      <span i18n>Acepto el <a href="/documentos" target="_blank">contrato de transporte.</a>
+                      </span>
+                    </label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" formControlName="decretos" required id="decretos"
+                      class="custom-control-input">
+                    <label for="decretos" class="custom-control-label">
+                      <span i18n>Acepto las <a href="/documentos" target="_blank">políticas de desistimiento, retracto,
+                          reintegro y cancelación.</a>
+                      </span>
+                    </label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" formControlName="soportes" required id="soportes"
+                      class="custom-control-input">
+                    <label for="soportes" class="custom-control-label">
+                      <span i18n>Garantizo que tengo los soportes requeridos por las autoridades y
+                        me
+                        hago responsable en caso de que alguna autoridad los solicite antes,
+                        durante y/o después del viaje.</span>
+                    </label>
+                  </div>
+                  <hr>
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" formControlName="tycCovid" required id="tyc-covid"
+                      class="custom-control-input">
+                    <label for="tyc-covid" class="custom-control-label">
+                      <span i18n>Acepto los <a href="/documentos" target="_blank">Términos y condiciones
+                          COVID.</a></span>
+                    </label>
+                  </div>
+                  <hr>
+                  <div>
+                    <span i18n>
+                      Al hacer clic en el botón de realizar compra aceptas y confirmas que leíste nuestra
+                      <a href="/documentos" target="_blank">Política de privacidad y protección de datos</a>,
+                      así como los <a href="/documentos" target="_blank">Términos y condiciones generales.</a>
+                    </span>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- TYC -->
+
+            <div class="card iq-card">
+              <div class="iq-card-body">
+                <h3 class="iq-card-title" i18n>Métodos de pago</h3>
+                <div class="row">
+                  <div class="container">
+                    <form [formGroup]="formMetodosPago">
+                      <div class="form-group">
+                        <div class="form-check">
+                          <div class="col-sm-12 col-lg-12">
+                            <div class="row">
+                              <div *ngFor="let metodo of mediosDePago">
+                                <div class="col-4 custom-control custom-radio mr-4"
+                                  *ngIf="(tiempoMayor == true || metodo.prontoPago == true )">
+                                  <div class="row">
+                                    <input type="radio" [attr.id]="metodo.nombre" name="customRadio"
+                                      class="custom-control-input align-middle"
+                                      (change)="handleChange(metodo.nombreApi)">
+                                    <label class="custom-control-label align-middle" [attr.for]="metodo.nombre">
+                                      <img [src]="metodo.imagen" [alt]="metodo.nombre"
+                                        style="max-width: 100px; vertical-align:middle;">
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="row p-3" *ngIf="cuentas.length > 0">
+                  <div class="col-12">
+                    <div class="row">
+                      <h3 i18n>RESUMEN DE COMPRA</h3>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-row justify-content-between">
+                      <h4 i18n>Detalle</h4>
+                      <h4 i18n>Valor</h4>
+                    </div>
+                    <div *ngFor="let cuenta of cuentas">
+                      <div class="d-flex flex-row justify-content-between" *ngIf="cuenta.nombre != 'Total'">
+                        <a data-toggle="tooltip" data-placement="left" [title]="cuenta.mensaje">
+                          <h5>
+                            {{ cuenta.nombre }}
+                            <i class="ri-information-line"></i>
+                          </h5>
+                        </a>
+                        <span>{{ cuenta.valor | currency: 'COP' : '$':'3.2-2' }}</span>
+                      </div>
+                      <hr *ngIf="cuenta.nombre == 'Total'">
+                      <div class="d-flex justify-content-between" *ngIf="cuenta.nombre == 'Total'">
+                        <h5>El uso plataforma web y el IVA del mismo NO son sujetos de reintegro</h5>
+                      </div>
+                      <hr *ngIf="cuenta.nombre == 'Total'">
+                      <div class="d-flex flex-row justify-content-between" *ngIf="cuenta.nombre == 'Total'">
+                        <a data-toggle="tooltip" data-placement="left" [title]="cuenta.mensaje">
+                          <h4>
+                            {{ cuenta.nombre }}
+                            <i class="ri-information-line"></i>
+                          </h4>
+                        </a>
+                        <h4>{{ cuenta.valor | currency: 'COP' : '$':'3.2-2' }}</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <form [formGroup]="formDescuento">
+                  <div class="form-group row">
+                    <div class="col-8">
+                      <input type="email" class="form-control" id="documentopago" placeholder="Cupón de descuento"
+                        formControlName="cupon" required>
+                    </div>
+                    <div class="col-4">
+                      <button class="btn btn-primary pr-3 pl-3 pt-2 pb-2" (click)="redimirCupon()"
+                        [disabled]="(!formChecks.valid || !formPago.valid || metodoPago == null || disabledButton == true)">
+                        <h5 class="text-white">REDIMIR CUPÓN</h5>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+                <div class="d-flex flex-row justify-content-between align-items-center">
+                  <button class="btn btn-primary p-2" (click)="onSubmit()"
+                    [disabled]="(!formChecks.valid || !formPago.valid || metodoPago == null || disabledButton == true)">
+                    <h5 class="text-white" i18n>REALIZAR COMPRA</h5>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+      <!-- INFO PAGOS -->
+
+    </div>
+  </div>
+</section>
+<!-- Wrapper END -->

@@ -1,0 +1,39 @@
+<section id="faq">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a routerLink="/" i18n>Inicio</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a routerLink="/perfil" i18n>Compañía</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page" i18n>
+                            Preguntas frequentes
+                        </li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-group">
+
+                    <div class="col-sm-6 col-lg-4" *ngFor="let faq of faqs">
+                        <div class="card iq-card mb-3">
+                            <div class="card-body" [ngClass]="{'text-justify': isMobileResolution == true}">
+                                <div class="iq-card-title">
+                                    <b class="text-primary">{{ faq.pregunta }}</b>
+                                </div>
+                                <span>{{ faq.respuesta }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

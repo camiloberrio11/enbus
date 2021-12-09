@@ -1,0 +1,127 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-lg-4">
+            <div class="card iq-card">
+                <div class="card-body">
+                    <h3 class="iq-card-title">Buscar viajes</h3>
+                    <form class="mt-4" [formGroup]="formBusqueda" (ngSubmit)="onSubmit()">
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label for="documento">Documento</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" id="documento" formControlName="documento" class="form-control mb-0"
+                                    placeholder="Documento">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-3">
+                                <label for="orden">Orden</label>
+                            </div>
+                            <div class="col-9">
+                                <input type="text" id="orden" formControlName="orden" class="form-control mb-0"
+                                    placeholder="Número de orden">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary p-2 col-12">
+                                    <h5 class="text-white" i18n><i class="ri-search-line"></i>BUSCAR VIAJES</h5>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title"><i class="ri-file-list-3-line"></i> INFORMACIÓN</h3>
+                </div>
+            </div>
+            <div *ngFor="let viaje of viajes">
+                <div class="card-group">
+
+                    <div class="card iq-card mb-3 col-sm-4 iq-border-box text-primary">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between mb-3">
+                                <h4 class="card-title"><i class="ri-user-line"></i> PASAJERO</h4>
+                                <hr>
+                                <div class="col-sm-12 col-lg-12">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4 class="text-primary"><i class="ri-user-line"></i> NOMBRE</h4>
+                                            <h5>{{ viaje.pasajero.nombre }}</h5>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="text-primary"><i class="ri-bank-card-line"></i> DOCUMENTO</h4>
+                                            <h5>{{ viaje.pasajero.documento }}</h5>
+                                        </div>
+                                        <div class="col-12">
+                                            <h4 class="text-primary"><i class="ri-mail-line"></i> CORREO</h4>
+                                            <h5>{{ viaje.pasajero.correo }}</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card iq-card mb-3 col-sm-8 iq-border-box text-primary">
+                        <div class="card-body">
+                            <div class="row d-flex justify-content-between mb-3">
+                                <h4 class="card-title"><i class="ri-road-map-line"></i> VIAJE</h4>
+                                <hr>
+                                <div class="col-sm-12 col-lg-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <h4 class="text-primary"><i class="ri-route-line"></i> RUTA</h4>
+                                            <h5>{{ viaje.ruta.origen }} <i class="ri-arrow-right-line"></i> {{ viaje.ruta.destino }}</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h4 class="text-primary"><i class="ri-calendar-event-line"></i> FECHA</h4>
+                                            <h5>{{ viaje.fecha_viaje }}</h5>
+                                        </div>
+                                        <div class="col-3">
+                                            <h4 class="text-primary"><i class="ri-timer-line"></i> HORA</h4>
+                                            <h5>{{ viaje.hora_viaje }}</h5>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-3">
+                                            <strong>PAGO</strong>
+                                            <br>
+                                            <span>{{ viaje.pv_payment }}</span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <strong>ESTADO</strong>
+                                            <br>
+                                            <span>{{ viaje.pv_status }}</span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <strong>VALOR</strong>
+                                            <br>
+                                            <span>${{ viaje.valor }}</span>
+                                        </div>
+                                        <div class="col-sm-12 col-md-3">
+                                            <strong>PUESTO</strong>
+                                            <br>
+                                            <span>${{ viaje.puesto }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

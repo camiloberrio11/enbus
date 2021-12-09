@@ -1,0 +1,387 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <ul id="progressbar" class="text-center">
+        <li class="step0 done" id="step1" i18n>Viaje Ida</li>
+        <li class="step0 active" id="step2" i18n>Viaje Vuelta</li>
+        <li class="step0" id="step3" i18n>Pago</li>
+      </ul>
+    </div>
+  </div>
+  <div class="loader" *ngIf="rutas.length == 0"></div>
+  <div class="row">
+    <div
+      *ngIf="listaViajesVisible == true"
+      [ngClass]="{
+        'col-sm-12 col-lg-12': rutaSeleccionada.id == null,
+        'col-sm-12 col-lg-4': rutaSeleccionada.id != null
+      }"
+    >
+      <div class="card-group d-flex flex-column">
+        <!-- <div class="iq-card mb-3" *ngIf="rutaSeleccionada.id != null">
+                <div class="card-body text-center">
+                    <h3 class="iq-card-title text-primary" i18n>RESUMEN DE VIAJE</h3>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <h5 i18n>Origen</h5>
+                        <span>{{ rutaSeleccionada.origen }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5 i18n>Destino</h5>
+                        <span>{{ rutaSeleccionada.destino }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5 i18n>Fecha</h5>
+                        <span>{{ rutaSeleccionada.fecha }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5 i18n>Hora</h5>
+                        <span>{{ rutaSeleccionada.hora }}</span>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h5 i18n>Servicio</h5>
+                        <span>{{ rutaSeleccionada.tipo_vehiculo }}</span>
+                    </div>
+                    <br>
+                </div>
+            </div> -->
+        <div class="container m-0" *ngFor="let ruta of rutas">
+          <!-- <div class="card iq-card mb-3 col-sm-12 iq-border-box text-primary" *ngIf="ruta.id != rutaSeleccionada.id"> -->
+          <div
+            class="card iq-card mb-3 col-sm-12 iq-border-box text-primary"
+            [ngStyle]="{
+              'background-color':
+                ruta.id == rutaSeleccionada.id ? '#b3ddff' : 'white'
+            }"
+          >
+            <div class="card-body">
+              <div class="row d-flex justify-content-between mb-3">
+                <div
+                  class="col-sm-12"
+                  [ngClass]="{
+                    'col-lg-10': rutaSeleccionada.id == null,
+                    'col-lg-12': rutaSeleccionada.id != null
+                  }"
+                >
+                  <div class="row" *ngIf="rutaSeleccionada.id == null">
+                    <div class="col-sm-12 col-md-4">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-community-line"></i> ORIGEN
+                      </h4>
+                      <h5>{{ ruta.origen }}</h5>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-hotel-line"></i> DESTINO
+                      </h4>
+                      <h5>{{ ruta.destino }}</h5>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-calendar-event-line"></i> FECHA
+                      </h4>
+                      <h5>{{ ruta.fecha }}</h5>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="rutaSeleccionada.id != null">
+                    <!-- <div class="col-sm-6">
+                                        <h4 class="text-primary" i18n><i class="ri-community-line"></i> ORIGEN</h4>
+                                        <h5>{{ ruta.origen }}</h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h4 class="text-primary" i18n><i class="ri-hotel-line"></i> DESTINO</h4>
+                                        <h5>{{ ruta.destino }}</h5>
+                                    </div> -->
+                    <div class="col-sm-8">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-community-line"></i> RUTA
+                      </h4>
+                      <h5>
+                        {{ ruta.origen }} <i class="ri-arrow-right-s-line"></i>
+                        {{ ruta.destino }}
+                      </h5>
+                    </div>
+                    <div class="col-sm-4">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-calendar-event-line"></i> FECHA
+                      </h4>
+                      <h5>{{ ruta.fecha }}</h5>
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-12 col-md-4">
+                      <strong i18n>HORA</strong>
+                      <br />
+                      <span>{{ ruta.hora | dateTime }}</span>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <strong i18n>SERVICIO</strong>
+                      <br />
+                      <span>{{ ruta.tipo_vehiculo }}</span>
+                    </div>
+                    <div class="col-sm-12 col-md-4">
+                      <h4 class="text-primary" i18n>
+                        <i class="ri-money-dollar-circle-fill"></i> DESDE
+                      </h4>
+                      <h5>${{ ruta.precio_primera_clase }}</h5>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="col-sm-12"
+                  [ngClass]="{
+                    'col-lg-2': rutaSeleccionada.id == null,
+                    'col-lg-12': rutaSeleccionada.id != null
+                  }"
+                  *ngIf="ruta.id != rutaSeleccionada.id"
+                >
+                  <div class="row">
+                    <div
+                      style="border-left: 1px solid #f05a24"
+                      *ngIf="
+                        isMobileResolution == false &&
+                        rutaSeleccionada.id == null
+                      "
+                    ></div>
+                    <div class="col-11">
+                      <!-- <h4 class="text-primary" i18n><i class="ri-money-dollar-circle-fill"></i> DESDE</h4>
+                                        <h5>${{ ruta.precio_primera_clase }}</h5> -->
+                      <div class="col-12 mt-3 p-0">
+                        <button
+                          type="button"
+                          (click)="seleccionarViaje(ruta)"
+                          class="btn btn-primary w-100"
+                        >
+                          <h5 class="text-white p-1" i18n>
+                            <i class="ri-shopping-cart-line"></i>
+                            Seleccionar
+                          </h5>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="col-sm-12 col-lg-4"
+      *ngIf="rutaSeleccionada.id != null && seatMapVisible == true"
+    >
+      <div class="card iq-card">
+        <div class="iq-card-body text-center">
+          <h3 class="iq-card-title text-primary" i18n>MAPA DE ASIENTOS</h3>
+
+          <div
+            class="row justify-content-center mt-3 mb-3"
+            *ngIf="rutaSeleccionada.mapa_asientos_segundo"
+          >
+            <button
+              class="btn p-2 ml-3 mr-3"
+              [ngClass]="{ 'btn-primary': piso == 1, 'btn-light': piso != 1 }"
+              (click)="togglePiso(1)"
+              i18n
+            >
+              PISO 1
+            </button>
+            <button
+              class="btn p-2 ml-3 mr-3"
+              [ngClass]="{ 'btn-primary': piso == 2, 'btn-light': piso != 2 }"
+              (click)="togglePiso(2)"
+              i18n
+            >
+              PISO 2
+            </button>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                  <ul class="list-inline iq-booking-no">
+                    <li class="list-inline-item">
+                      <a class="iq-seat">
+                        <img src="assets/images/small/04.svg" class="default" />
+                        <img
+                          src="assets/images/small/05.svg"
+                          class="active-seat"
+                        />
+                      </a>
+                      <span i18n>Conductor</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                  <ul
+                    class="list-inline iq-booking-no"
+                    *ngFor="let fila of miSeatmap"
+                  >
+                    <li class="list-inline-item" *ngFor="let puesto of fila">
+                      <a
+                        class="iq-seat silla-disponible"
+                        [ngClass]="{ 'bg-success': puesto.estado == 'a' }"
+                        (click)="seleccionAsiento(puesto)"
+                        *ngIf="
+                          puesto.estado == 'f' ||
+                          puesto.estado == 'a' ||
+                          puesto.estado == 'D'
+                        "
+                      >
+                        <img src="" class="default" />
+                        <img src="" class="active-seat" />
+                        <h4 class="numero-silla">{{ puesto.numero }}</h4>
+                      </a>
+                      <a
+                        class="iq-seat bg-secondary silla-reservada"
+                        *ngIf="puesto.estado == 'S'"
+                      >
+                        <img src="" class="default" />
+                        <img src="" class="active-seat" />
+                        <h4 class="numero-silla">{{ puesto.numero }}</h4>
+                      </a>
+                      <a
+                        class="iq-seat bg-danger silla-ocupada"
+                        *ngIf="puesto.estado == 'O'"
+                      >
+                        <img src="" class="default" />
+                        <img src="" class="active-seat" />
+                        <h4 class="numero-silla">{{ puesto.numero }}</h4>
+                      </a>
+                      <a class="iq-seat bg-light" *ngIf="puesto.estado == '_'">
+                        <img src="" class="default" />
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="row d-flex justify-content-around mt-3 mb-3"
+            *ngIf="isMobileResolution == true"
+          >
+            <button
+              class="btn btn-warning"
+              [ngClass]="{ 'm-2 col-4': isMobileResolution == true }"
+              (click)="mostrarViajes()"
+              i18n
+            >
+              Atras
+            </button>
+            <button
+              class="btn btn-primary"
+              [ngClass]="{ 'm-2 col-4': isMobileResolution == true }"
+              (click)="mostrarResumen()"
+              i18n
+            >
+              Siguiente
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 d-flex flex-column">
+      <div
+        class="card-group d-flex flex-column"
+        *ngIf="rutaSeleccionada.id != null && resumenVisible == true"
+      >
+        <div
+          class="iq-card"
+          *ngIf="isMobileResolution == false || resumenVisible == true"
+        >
+          <div class="card-body text-center">
+            <h3 class="iq-card-title text-primary" i18n>RESUMEN DE COMPRA</h3>
+            <hr />
+            <div class="d-flex justify-content-between">
+              <h4 i18n>Detalle</h4>
+              <h4 i18n>Valor</h4>
+            </div>
+            <hr />
+            <div *ngFor="let cuenta of cuentasVuelta">
+              <div
+                class="d-flex justify-content-between"
+                *ngIf="cuenta.nombre != 'Total'"
+              >
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  [title]="cuenta.mensaje"
+                >
+                  <h5>
+                    {{ cuenta.nombre }}
+                    <i class="ri-information-line"></i>
+                  </h5>
+                </a>
+                <span>{{ cuenta.valor | currency: 'COP':'$':'3.2-2' }}</span>
+              </div>
+              <hr *ngIf="cuenta.nombre == 'Total'" />
+              <div
+                class="d-flex justify-content-between"
+                *ngIf="cuenta.nombre == 'Total'"
+              >
+                <h5>
+                  El uso plataforma web y el IVA del mismo NO son sujetos de
+                  reintegro
+                </h5>
+              </div>
+              <div
+                class="d-flex justify-content-between"
+                *ngIf="cuenta.nombre == 'Total'"
+              >
+                <a
+                  data-toggle="tooltip"
+                  data-placement="left"
+                  [title]="cuenta.mensaje"
+                >
+                  <h4>
+                    {{ cuenta.nombre }}
+                    <i class="ri-information-line"></i>
+                  </h4>
+                </a>
+                <h4>{{ cuenta.valor | currency: 'COP':'$':'3.2-2' }}</h4>
+              </div>
+            </div>
+            <br />
+            <div class="row d-flex justify-content-around">
+              <button
+                class="btn btn-warning w-100 p-2 m-2 col-4"
+                *ngIf="isMobileResolution == true"
+                (click)="mostrarSeatMap()"
+                i18n
+              >
+                Atras
+              </button>
+              <button
+                class="btn btn-primary w-100 p-2"
+                [ngClass]="{ 'm-2 col-4': isMobileResolution == true }"
+                (click)="onSubmit()"
+                i18n
+              >
+                Siguiente
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card iq-card" *ngIf="cargandoCuentas == true">
+        <div class="iq-card-body p-5">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

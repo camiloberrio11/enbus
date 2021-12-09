@@ -1,0 +1,97 @@
+<section class="sign-in-page">
+    <div class="container-fluid p-0">
+        <div class="row no-gutters">
+            <div class="col-sm-12 row align-self-center">
+                <div class="col-sm-0 col-md-2 col-lg-3"></div>
+                <div class="col-sm-12 col-md-8 col-lg-6 iq-card">
+                    <div class="sign-in-from iq-card-body" style="padding-top: 2em;">
+                        <h1 class="mb-0 card-title">Registro</h1>
+                        <p>Por favor suministra la siguiente información para registrarte.</p>
+                        <form class="mt-4" [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="nombre">
+                                    Nombre
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="first_name" class="form-control" id="nombre"
+                                        placeholder="Nombre" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="apellidos">
+                                    Apellidos
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="last_name" class="form-control" id="apellidos"
+                                        placeholder="Apellidos" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="email">
+                                    Email
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="email" class="form-control" id="email"
+                                        placeholder="Email" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="documento">
+                                    Documento
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="documento" class="form-control" id="documento"
+                                        placeholder="Documento" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="telefono">
+                                    Teléfono
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="telefono" class="form-control" id="telefono"
+                                        placeholder="Teléfono" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="usuario">
+                                    Usuario
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="text" formControlName="username" class="form-control" id="usuario"
+                                        placeholder="Usuario" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="control-label col-sm-3 align-self-center" for="contrasena">
+                                    Contraseña
+                                </label>
+                                <div class="col-sm-9">
+                                    <input type="password" formControlName="password" class="form-control" id="contrasena"
+                                        placeholder="Contraseña" required>
+                                </div>
+                            </div>
+                            <div class="d-inline-block w-100">
+                                <div class="custom-control custom-checkbox d-inline-block mt-2 pt-1">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1" i18n>Acepto los
+                                        <a href="/documentos" target="_blank">Términos y condiciones</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary float-right" i18n>Aceptar</button>
+                            </div>
+                            <div class="sign-info">
+                                <span class="dark-color d-inline-block line-height-2" i18n>Ya tienes una cuenta?
+                                    <a routerLink="/login">Ingresa aquí</a>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-0 col-md-2 col-lg-3"></div>
+            </div>
+        </div>
+    </div>
+</section>

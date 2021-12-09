@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* .myQr {
+    width: 20%;
+} */
+
+.mat-form-field-underline {
+    color: transparent !important;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.mat-form-field-infix {
+    border-top: 0;
+}
+
+@media (min-width:320px) {
+    .myQr {
+        width: 80%;
+    }
+}
+@media (min-width:768px) {
+    .myQr {
+        width: 30%;
+    }
+}
+@media (min-width:1024px) {
+    .myQr {
+        width: 20%;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
