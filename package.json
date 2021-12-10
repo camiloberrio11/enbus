@@ -9,9 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-gz": "ng build --prod --aot --vendor-chunk --common-chunk --delete-output-path --buildOptimizer --output-path=dist/ --build-optimizer && gzipper compress --verbose --output-file-format [filename].[ext].[compressExt] ./dist ./distgz",
-    "push-s3" : "aws s3 cp .\\dist\\web-flota-ospina\\ s3://flota-ospina --recursive",
-    "invalidate-clowdfront" : "aws cloudfront create-invalidation --distribution-id E3QYWEEU4HNT55 --paths \"/*\"",
-    "build-and-push" : "ng build && npm run push-s3 && npm run invalidate-clowdfront"
+    "push-s3": "aws s3 cp .\\dist\\web-flota-ospina\\ s3://flota-ospina --recursive",
+    "invalidate-clowdfront": "aws cloudfront create-invalidation --distribution-id E3QYWEEU4HNT55 --paths \"/*\"",
+    "build-and-push": "ng build && npm run push-s3 && npm run invalidate-clowdfront"
   },
   "private": true,
   "prettier": {

@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EndpointService {
-
-  constructor() { }
+  constructor() {}
 
   private endpointLocal = 'http://localhost:8000/api/';
   private endpointIbePruebas = 'https://bts2.metis.com.co/api/';
@@ -17,4 +16,7 @@ export class EndpointService {
     return this.endpointActual;
   }
 
+  public setEndpoint(newEndpoing: string): void {
+    this.endpointActual = newEndpoing;
+  }
 }

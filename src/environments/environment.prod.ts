@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  urlEnBus: 'https://api.enbus.co'
 };

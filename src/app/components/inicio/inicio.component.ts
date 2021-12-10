@@ -18,8 +18,6 @@ import { Faq } from '../../shared/prismic/models/faq.dto';
 import { Testimonio } from '../../shared/prismic/models/testimonio.dto';
 import {
   SliderInicio,
-
-  
   SliderGaleria,
 } from '../../shared/prismic/models/slider.dto';
 import Swal from 'sweetalert2';
@@ -29,6 +27,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { EnbusService } from 'src/app/services/enbus/enbus.service';
 
 @Component({
   selector: 'app-inicio',
@@ -100,8 +99,11 @@ export class InicioComponent implements OnInit {
     private testimoniosService: TestimoniosServiceImpl,
     private sliderService: SliderServiceImpl,
     private dataService: DataService,
-    public globals: GlobalService
-  ) {}
+    public globals: GlobalService,
+    private enbusService: EnbusService
+  ) {
+    this.getOrigins();
+  }
 
   ngOnInit() {
     this.globals.origen = null;
@@ -121,24 +123,24 @@ export class InicioComponent implements OnInit {
     /// Hace la petición de los origenes disponibles para viajar
     // this.origenes = this.dataService.getOrigenes();
 
-    this.dataService.getOrigenes().subscribe((data) => {
-      let resp;
-      console.log(data);
-      resp = data;
-      resp.forEach((element) => {
-        this.origenes.push(element.origen);
-      });
+    // this.dataService.getOrigenes().subscribe((data) => {
+    //   let resp;
+    //   console.log(data);
+    //   resp = data;
+    //   resp.forEach((element) => {
+    //     this.origenes.push(element.origen);
+    //   });
 
-      this.origenesFiltrados = this.tripForm.valueChanges.pipe(
-        startWith(''),
-        map(() => {
-          const filterValue = this.tripForm.value.origen.toLowerCase();
-          return this.origenes.filter((option) =>
-            option.toLowerCase().includes(filterValue)
-          );
-        })
-      );
-    });
+    //   this.origenesFiltrados = this.tripForm.valueChanges.pipe(
+    //     startWith(''),
+    //     map(() => {
+    //       const filterValue = this.tripForm.value.origen.toLowerCase();
+    //       return this.origenes.filter((option) =>
+    //         option.toLowerCase().includes(filterValue)
+    //       );
+    //     })
+    //   );
+    // });
 
     /// Hace la petición de 3 preguntas frecuentes para ser mostradas en el inicio
     this.faqService.get3Faqs().then((dataFecha) => (this.faqs = dataFecha));
@@ -171,76 +173,135 @@ export class InicioComponent implements OnInit {
     /// Hace la petición de la lista de destinos teniendo en cuenta el origen seleccionado
     // this.destinos = this.dataService.getDestinos(deviceValue);
 
-    console.log(deviceValue);
-
     this.destinos = [];
-
     this.globals.origen = deviceValue;
-    this.dataService.getDestinos(deviceValue).subscribe((data) => {
-      let resp;
-      resp = data;
-      resp.forEach((element) => {
-        this.destinos.push(element.destino);
-      });
-      // this.destinos = lista;
+    this.enbusService.getDeparture(deviceValue).subscribe(
+      (depa) => {
+        this.destinos = depa.data;
 
-      this.destinosFiltrados = this.tripForm.valueChanges.pipe(
-        startWith(''),
-        map(() => {
-          const filterValue = this.tripForm.value.destino.toLowerCase();
-          return this.destinos.filter((option) =>
-            option.toLowerCase().includes(filterValue)
-          );
-        })
-      );
-    });
+        this.destinosFiltrados = this.tripForm.valueChanges.pipe(
+          startWith(''),
+          map(() => {
+            const filterValue = this.tripForm.value.destino.toLowerCase();
+            return this.destinos.filter((option) =>
+              option.toLowerCase().includes(filterValue)
+            );
+          })
+        );
+      },
+      (err) => {}
+    );
+    // this.dataService.getDestinos(deviceValue).subscribe((data) => {
+    //   console.log(data)
+    //   let resp;
+    //   resp = data;
+    //   resp.forEach((element) => {
+    //     this.destinos.push(element.destino);
+    //   });
+    //   // this.destinos = lista;
+
+    //   this.destinosFiltrados = this.tripForm.valueChanges.pipe(
+    //     startWith(''),
+    //     map(() => {
+    //       const filterValue = this.tripForm.value.destino.toLowerCase();
+    //       return this.destinos.filter((option) =>
+    //         option.toLowerCase().includes(filterValue)
+    //       );
+    //     })
+    //   );
+    // });
     this.disableDestino = null;
   }
 
   /// Metodo ejecutado al seleccionar un destino
   onChangeDestino(deviceValue) {
     this.globals.destino = deviceValue;
-    let resp;
-    let resp2;
-    const self = this;
+    // const self = this;
     /// Hace la petición de la fecha máxima de viaje de ida
-    this.dataService
-      .getFecha(this.globals.origen, this.globals.destino)
-      .subscribe((dataFecha) => {
-        resp = dataFecha;
-        console.log(resp);
-        if (resp.fecha == null) {
-          Swal.fire({
-            title: 'No hay viajes disponibles',
-            text: `Lo sentimos, no hay viajes disponibles para la ruta ${this.globals.origen} - ${this.globals.destino}`,
-            icon: 'info',
-            showCancelButton: false,
-            showConfirmButton: true,
-          });
-          this.disableFechaIda = '';
-          this.disableFechaVuelta = '';
-        } else {
-          self.fechaMaxIda = moment(resp.fecha, 'DD/MM/YYYY')
+    this.enbusService
+      .getFechaMaxima(this.globals.origen, this.globals.destino, '09/12/2021')
+      .subscribe(
+        (dataIda) => {
+          if (!dataIda.data.fecha) {
+            Swal.fire({
+              title: 'No hay viajes disponibles',
+              text: `Lo sentimos, no hay viajes disponibles para la ruta ${this.globals.origen} - ${this.globals.destino}`,
+              icon: 'info',
+              showCancelButton: false,
+              showConfirmButton: true,
+            });
+            this.disableFechaIda = '';
+            this.disableFechaVuelta = '';
+            return;
+          }
+          this.fechaMaxIda = moment(dataIda.data.fecha, 'DD/MM/YYYY')
             .add('1', 'days')
             .format('YYYY-MM-DD');
           this.disableFechaIda = null;
 
-          this.dataService
-            .getFecha(this.globals.destino, this.globals.origen)
-            .subscribe((dataFecha2) => {
-              resp2 = dataFecha2;
-              if (resp2.fecha == null) {
-                this.disableFechaVuelta = '';
-              } else {
+          this.enbusService
+            .getFechaMaxima(
+              this.globals.destino,
+              this.globals.origen,
+              '09/12/2021'
+            )
+            .subscribe(
+              (dataVuelta) => {
+                if (!dataVuelta.data.fecha) {
+                  this.disableFechaVuelta = '';
+                  return;
+                }
                 this.disableFechaVuelta = null;
-                console.log(resp2);
-                self.fechaMaxVuelta = moment(resp2.fecha, 'DD/MM/YYYY')
+                this.fechaMaxVuelta = moment(
+                  dataVuelta.data.fecha,
+                  'DD/MM/YYYY'
+                )
                   .add('1', 'days')
                   .format('YYYY-MM-DD');
-              }
-            });
-        }
-      });
+              },
+              (err) => {}
+            );
+        },
+        (err) => {}
+      );
+
+    // this.dataService
+    //   .getFecha(this.globals.origen, this.globals.destino)
+    //   .subscribe((dataFecha) => {
+    //     resp = dataFecha;
+    //     console.log(resp);
+    //     if (resp.fecha == null) {
+    //       Swal.fire({
+    //         title: 'No hay viajes disponibles',
+    //         text: `Lo sentimos, no hay viajes disponibles para la ruta ${this.globals.origen} - ${this.globals.destino}`,
+    //         icon: 'info',
+    //         showCancelButton: false,
+    //         showConfirmButton: true,
+    //       });
+    //       this.disableFechaIda = '';
+    //       this.disableFechaVuelta = '';
+    //     } else {
+    //       self.fechaMaxIda = moment(resp.fecha, 'DD/MM/YYYY')
+    //         .add('1', 'days')
+    //         .format('YYYY-MM-DD');
+    //       this.disableFechaIda = null;
+
+    //       this.dataService
+    //         .getFecha(this.globals.destino, this.globals.origen)
+    //         .subscribe((dataFecha2) => {
+    //           resp2 = dataFecha2;
+    //           if (resp2.fecha == null) {
+    //             this.disableFechaVuelta = '';
+    //           } else {
+    //             this.disableFechaVuelta = null;
+    //             console.log(resp2);
+    //             self.fechaMaxVuelta = moment(resp2.fecha, 'DD/MM/YYYY')
+    //               .add('1', 'days')
+    //               .format('YYYY-MM-DD');
+    //           }
+    //         });
+    //     }
+    //   });
     /// Hace la petición de la fecha máxima de viaje de vuelta
   }
 
@@ -379,5 +440,23 @@ export class InicioComponent implements OnInit {
             });
         }
       });
+  }
+
+  private getOrigins(): void {
+    this.enbusService.getOrigins().subscribe(
+      (org) => {
+        this.origenes = org.data;
+        this.origenesFiltrados = this.tripForm.valueChanges.pipe(
+          startWith(''),
+          map(() => {
+            const filterValue = this.tripForm.value.origen.toLowerCase();
+            return this.origenes.filter((option) =>
+              option.toLowerCase().includes(filterValue)
+            );
+          })
+        );
+      },
+      (err) => {}
+    );
   }
 }
