@@ -207,89 +207,67 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-xl-3 col-lg-6 col-12">
-      <div class="card">
-        <div class="card-content">
-          <img
-            class="card-img-top img-fluid p-2 imgcity"
-            src="assets/images/bogota.jpg"
-            alt="Card image cap"
-          />
-          <div class="card-body cardmax">
-            <h4 class="card-title">Bogotá</h4>
-            <p class="card-text">
-              Puedes viajar hoy a Bogotá y conocer todos los sitios turisticos
-              que esta ciudad tiene para ti
-            </p>
-            <button type="button" class="btn btn-danger">
-              Comprar tiquete
-            </button>
+
+    <div class="container">
+      <div class="row">
+        <div *ngFor="let card of cardsHome" class="col-xl-3 col-lg-6 col-12">
+          <div class="card">
+            <div class="card-content">
+              <img
+                class="card-img-top img-fluid p-2 imgcity"
+                [src]="card?.img?.url"
+                alt="Card image cap"
+              />
+              <div class="card-body cardmax">
+                <h4 class="card-title">{{ card?.title }}</h4>
+                <p class="card-text">{{ card?.description }}</p>
+                <a
+                  type="button"
+                  class="btn cardlink"
+                  target="_blank"
+                  [href]="card?.linkExternal"
+                  rel="noopener"
+                  >{{ card?.labelBtn }}</a
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-xl-3 col-lg-6 col-12">
+
+  </div>
+</div>
+
+<!-- Empresas asociadas -->
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-xl-12 col-lg-12 col-12">
       <div class="card">
         <div class="card-content">
-          <img
-            class="card-img-top img-fluid p-2 imgcity"
-            src="assets/images/medellin.jpg"
-            alt="Card image cap"
-            height="200"
-          />
-          <div class="card-body cardmax">
-            <h4 class="card-title">Medellín</h4>
-            <p class="card-text">
-              El clima y la gente de Medellín está esperando por ti, visita
-              ahora la ciudad de la eterna primavera
-            </p>
-            <button type="button" class="btn btn-danger">Go somewhere</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-12">
-      <div class="card">
-        <div class="card-content">
-          <img
-            class="card-img-top img-fluid p-2 imgcity"
-            src="assets/images/discounts.png"
-            alt="Card image cap"
-          />
-          <div class="card-body cardmax">
-            <h4 class="card-title">Descuentos del 15%</h4>
-            <p class="card-text">
-              Tenemos descuentos especiales con nuestro codigo especial
-              ENBUSMELLEVA en todos los trayectos
-            </p>
-            <button type="button" class="btn btn-danger">Utilizar cupón</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-lg-6 col-12">
-      <div class="card">
-        <div class="card-content">
-          <img
-            class="card-img-top img-fluid p-2 imgcity"
-            src="assets/images/metrobus.jpg"
-            alt="Card image cap"
-          />
-          <div class="card-body cardmax">
-            <h4 class="card-title">Buses</h4>
-            <p class="card-text">
-              Contamos con diferentes tipos de buses y servicios los cuales se
-              acomodarán a tus necesidades
-            </p>
-            <button type="button" class="btn btn-danger">
-              Comprar tiquete
-            </button>
+          <div class="card-body">
+            <div class="media">
+              <div class="media-body text-left payments">
+                <h3 class="mb-4 primary text-center titlepayment">
+                  Empresas asociadas
+                </h3>
+                <div class="boxpayment">
+                  <button class="btnpayment" *ngFor="let empr of empresasAsociadas">
+                    <img [src]="empr?.image_empresa?.url" [alt]="'Logo' + empr?.nombre_empresa" />
+                  </button>
+                </div>
+              </div>
+              <div class="media-right align-self-center">
+                <i class="ft-life-buoy primary font-large-2 float-right"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <div class="container mt-3">
   <div class="row">

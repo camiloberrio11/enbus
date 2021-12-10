@@ -1,8 +1,9 @@
+import { EmpresaAsociada } from './../../shared/prismic/models/slider.dto';
 import { Inject, Injectable } from '@angular/core';
 import { PrismicService } from '../../shared/prismic/prismic.service.interface';
 import { Query } from '../../shared/prismic/query';
 import { SliderService } from './slider.service.interface';
-import { SliderInicio, SliderPerfil, SliderGaleria } from '../../shared/prismic/models/slider.dto';
+import { SliderInicio, SliderPerfil, SliderGaleria, CardHome } from '../../shared/prismic/models/slider.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,34 @@ export class SliderServiceImpl implements SliderService {
           });
         });
         return listaSlider;
+      });
+    });
+  }
+
+  getCardsHome(): Promise<CardHome[]> {
+    return this.prismic.buildContext().then((ct) => {
+      return ct.api.query(Query.byType("tarjetas-inicio")).then((response) => {
+        const listaSlider: CardHome[] = [];
+        const cards = response.results[0].data.tarjeta;
+        cards.forEach((element) => {
+          listaSlider.push({
+            img: element.image_card,
+            title: element.title_card,
+            description: element.description_card,
+            linkExternal: element.external_link,
+            labelBtn: element.label_button
+          });
+        });
+        return listaSlider;
+      });
+    });
+  }
+
+  getEmpresasAsociadas(): Promise<EmpresaAsociada[]> {
+    return this.prismic.buildContext().then((ct) => {
+      return ct.api.query(Query.byType("empresas-asociadas")).then((response) => {
+        const cards = response.results[0].data.tarjeta_empresa;
+        return cards;
       });
     });
   }

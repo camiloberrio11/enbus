@@ -1,3 +1,4 @@
+import { EmpresaAsociada } from './../../shared/prismic/models/slider.dto';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import {
   FormBuilder,
@@ -19,6 +20,7 @@ import { Testimonio } from '../../shared/prismic/models/testimonio.dto';
 import {
   SliderInicio,
   SliderGaleria,
+  CardHome,
 } from '../../shared/prismic/models/slider.dto';
 import Swal from 'sweetalert2';
 import { ContactoServiceImpl } from 'src/app/services/contacto/contacto.service';
@@ -38,6 +40,8 @@ import { EnbusService } from 'src/app/services/enbus/enbus.service';
 /// Se encarga de mostrar la información principal de la empresa y es el primer paso para el IBE
 export class InicioComponent implements OnInit {
   date = new Date().getFullYear();
+  cardsHome: CardHome[] = [];
+  empresasAsociadas: EmpresaAsociada[] = [];
   paymentsMethod = [
     'assets/images/tc.png',
     'assets/images/susuerte.png',
@@ -167,6 +171,14 @@ export class InicioComponent implements OnInit {
     this.sliderService
       .getSliderGaleria()
       .then((dataSlider) => (this.sliderGaleria = dataSlider));
+
+    this.sliderService
+      .getCardsHome()
+      .then((dataSlider) => (this.cardsHome = dataSlider));
+
+    this.sliderService
+      .getEmpresasAsociadas()
+      .then((info) => this.empresasAsociadas = info);
   }
 
   /// Metodo ejecutado al seleccionar un origen
@@ -224,7 +236,11 @@ export class InicioComponent implements OnInit {
     // const self = this;
     /// Hace la petición de la fecha máxima de viaje de ida
     this.enbusService
-      .getFechaMaxima(this.globals.origen, this.globals.destino, `${dayFormat}/${month}/${year}`)
+      .getFechaMaxima(
+        this.globals.origen,
+        this.globals.destino,
+        `${dayFormat}/${month}/${year}`
+      )
       .subscribe(
         (dataIda) => {
           if (!dataIda.data.fecha) {
