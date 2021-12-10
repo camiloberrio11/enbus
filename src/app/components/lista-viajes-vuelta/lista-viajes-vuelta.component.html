@@ -82,6 +82,16 @@
                       </h4>
                       <h5>{{ ruta.fecha }}</h5>
                     </div>
+                    <div class="col-sm-12 col-md-4">
+                      <p class="text-primary namemp" i18n>
+                        {{ ruta.empresa }}
+                      </p>
+                      <img
+                        class="logoemp"
+                        [src]="ruta.logo_empresa"
+                        alt="logo-empresa"
+                      />
+                    </div>
                   </div>
                   <div class="row" *ngIf="rutaSeleccionada.id != null">
                     <!-- <div class="col-sm-6">
@@ -129,7 +139,7 @@
                   </div>
                 </div>
                 <div
-                  class="col-sm-12"
+                  class="col-sm-12 slct"
                   [ngClass]="{
                     'col-lg-2': rutaSeleccionada.id == null,
                     'col-lg-12': rutaSeleccionada.id != null
@@ -152,12 +162,19 @@
                           type="button"
                           (click)="seleccionarViaje(ruta)"
                           class="btn btn-primary w-100"
+                          [ngClass]="+ruta.disponible < 0 && 'nodis'"
                         >
                           <h5 class="text-white p-1" i18n>
                             <i class="ri-shopping-cart-line"></i>
                             Seleccionar
                           </h5>
                         </button>
+                        <p *ngIf="+ruta?.disponible > 0" class="seatcant">
+                          Asientos disponibles: {{ ruta?.disponible }}
+                        </p>
+                        <p *ngIf="+ruta?.disponible < 0" class="seatcant">
+                          No dispobible
+                        </p>
                       </div>
                     </div>
                   </div>

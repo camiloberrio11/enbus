@@ -57,3 +57,7 @@
 .payments {
   overflow-x: scroll;
 }
+
+footer {
+  text-align: center;
+}

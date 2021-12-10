@@ -2,6 +2,7 @@ import { environment } from './../../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { DisponibilidadRuta } from 'src/app/models/Trayectos.enbus';
 
 @Injectable({
   providedIn: 'root',
@@ -31,8 +32,8 @@ export class EnbusService {
     origin: string,
     departure: string,
     dateOutbound: string
-  ): Observable<any> {
-    return this.http.get(
+  ): Observable<DisponibilidadRuta> {
+    return this.http.get<DisponibilidadRuta>(
       `${environment.urlEnBus}/viajes?origin=${origin}&destination=${departure}&date=${dateOutbound}`
     );
   }

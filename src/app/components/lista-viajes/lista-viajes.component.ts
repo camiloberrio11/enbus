@@ -1,3 +1,4 @@
+import { EndpointService } from './../../services/endpoint/endpoint.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -11,17 +12,17 @@ import { Cobro } from '../../models/cuenta.dto';
 import { GlobalService } from 'src/app/services/global/global.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { EnbusService } from 'src/app/services/enbus/enbus.service';
 
 @Component({
   selector: 'app-lista-viajes',
   templateUrl: './lista-viajes.component.html',
-  styleUrls: ['./lista-viajes.component.css']
+  styleUrls: ['./lista-viajes.component.css'],
 })
 /// Componente dedicado para la página de lista de viajes de ida
 /// Se encarga de mostrar la información de los viajes de ida y
 /// la información del viaje seleccionado
 export class ListaViajesComponent implements OnInit {
-
   isMobileResolution: boolean;
   listaViajesVisible: boolean;
   seatMapVisible: boolean;
@@ -62,9 +63,11 @@ export class ListaViajesComponent implements OnInit {
     private websocketsService: WebsocketsService,
     private dataService: DataService,
     // private globals: Globals,
+    private readonly enbusService: EnbusService,
+    private endpointService: EndpointService,
     public globals: GlobalService,
     private router: Router,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) {
     if (window.innerWidth <= 1024) {
       this.isMobileResolution = true;
@@ -81,7 +84,6 @@ export class ListaViajesComponent implements OnInit {
 
   /// Metodo ejecutado en el inicio, hace las peticiones al servidor
   ngOnInit() {
-
     if (this.route.snapshot.queryParams.origen != null) {
       localStorage.setItem('origen', this.route.snapshot.queryParams.origen);
     }
@@ -104,7 +106,10 @@ export class ListaViajesComponent implements OnInit {
       this.globals.totalCompraIda = localStorage.getItem('totalCompraIda');
     }
 
-    if (localStorage.getItem('fechaVuelta') != null && localStorage.getItem('fechaVuelta') !== 'null') {
+    if (
+      localStorage.getItem('fechaVuelta') != null &&
+      localStorage.getItem('fechaVuelta') !== 'null'
+    ) {
       this.globals.fechaVuelta = localStorage.getItem('fechaVuelta');
     }
 
@@ -117,7 +122,9 @@ export class ListaViajesComponent implements OnInit {
     }
 
     if (localStorage.getItem('asientosSeleccionadosIda') != null) {
-      this.globals.asientosSeleccionadosIda = JSON.parse(localStorage.getItem('asientosSeleccionadosIda'));
+      this.globals.asientosSeleccionadosIda = JSON.parse(
+        localStorage.getItem('asientosSeleccionadosIda')
+      );
     }
     console.log('ida1', this.globals.fechaIda);
     console.log('vuelta1', this.globals.fechaVuelta);
@@ -129,25 +136,44 @@ export class ListaViajesComponent implements OnInit {
 
     // console.log(this.globals.rutaIda.mapa_asientos_primero);
 
-    if (this.globals.origen == null || this.globals.destino == null || this.globals.fechaIda == null) {
+    if (
+      this.globals.origen == null ||
+      this.globals.destino == null ||
+      this.globals.fechaIda == null
+    ) {
       /// Validación de formulario diligenciado
       this.formularioInicio();
     } else {
       /// Hace la petición de lista de viajes de ida
-      this.dataService.getEnrutamientos(
-        this.globals.origen,
-        this.globals.destino,
-        this.globals.fechaIda,
-      ).subscribe(
-        dataRutas => {
-          let resp;
-          resp = dataRutas;
-          resp.forEach(ruta => {
-            this.rutas.push(ruta);
-          });
-        },
-        err => { },
-      );
+      this.enbusService
+        .getAvailability(
+          this.globals.origen,
+          this.globals.destino,
+          this.globals.fechaIda
+        )
+        .subscribe(
+          (ida) => {
+            this.rutas = ida.data;
+          },
+          (err) => {}
+        );
+
+      // this.dataService
+      //   .getEnrutamientos(
+      //     this.globals.origen,
+      //     this.globals.destino,
+      //     this.globals.fechaIda
+      //   )
+      //   .subscribe(
+      //     (dataRutas) => {
+      //       let resp;
+      //       resp = dataRutas;
+      //       resp.forEach((ruta) => {
+      //         this.rutas.push(ruta);
+      //       });
+      //     },
+      //     (err) => {}
+      //   );
     }
   }
 
@@ -164,7 +190,9 @@ export class ListaViajesComponent implements OnInit {
     } else if (this.globals.fechaVuelta != null) {
       this.globals.cantidad = this.asientosSeleccionados.length;
       // tslint:disable-next-line: max-line-length
-      this.router.navigateByUrl(`/lista-viajes-vuelta/?origen=${this.globals.destino}&destino=${this.globals.origen}&fecha=${this.globals.fechaVuelta}`);
+      this.router.navigateByUrl(
+        `/lista-viajes-vuelta/?origen=${this.globals.destino}&destino=${this.globals.origen}&fecha=${this.globals.fechaVuelta}`
+      );
     } else {
       this.router.navigateByUrl('/datos-pasajero');
     }
@@ -199,16 +227,16 @@ export class ListaViajesComponent implements OnInit {
 
   /// Metodo para guardar la información del viaje seleccionado
   public seleccionarViaje(ruta: Route) {
-    console.log(ruta);
+    this.endpointService.setEndpoint(`https://${ruta.host}/api/`);
     this.mostrarSeatMap();
-
     this.valorTotal = 0;
-
     this.asientosSeleccionados = [];
     this.asientosReservados = [];
-
     this.globals.asientosSeleccionadosIda = [];
-    localStorage.setItem('asientosSeleccionadosIda', JSON.stringify(this.globals.asientosSeleccionadosIda));
+    localStorage.setItem(
+      'asientosSeleccionadosIda',
+      JSON.stringify(this.globals.asientosSeleccionadosIda)
+    );
 
     this.globals.rutaIda = ruta;
     this.rutaSeleccionada = ruta;
@@ -221,91 +249,135 @@ export class ListaViajesComponent implements OnInit {
     this.llenarMapa();
 
     /// Suscripción a las notificaciones de estado de asientos
-    this.websocketsService.subToTrip(ruta.id.toString() + 'FLOTAOSPINA').subscribe(
-      msg => {
-        const estado = msg;
-        this.editarAsiento(estado.seat, estado.status);
-      },
-      err => { },
-      () => { }
-    );
+    this.websocketsService
+      .subToTrip(ruta.id.toString() + 'FLOTAOSPINA')
+      .subscribe(
+        (msg) => {
+          const estado = msg;
+          this.editarAsiento(estado.seat, estado.status);
+        },
+        (err) => {},
+        () => {}
+      );
   }
 
   llenarMapa() {
     let consecutivo = 0;
     let numero = 1;
 
-    this.globals.rutaIda.mapa_asientos_primero.split(',').forEach(stringFila => {
-      // tslint:disable-next-line: prefer-const
-      let listaFila: Puesto[] = [];
+    this.globals.rutaIda.mapa_asientos_primero
+      .split(',')
+      .forEach((stringFila) => {
+        // tslint:disable-next-line: prefer-const
+        let listaFila: Puesto[] = [];
 
-      stringFila.split('').forEach(stringAsiento => {
-        if (stringAsiento !== '_') {
-          if (
-            this.globals.rutaIda.ocupado != null &&
-            this.globals.rutaIda.ocupado.length > 0 &&
-            this.globals.rutaIda.ocupado.includes(numero.toString())
-          ) {
-            listaFila.push({ consecutivo: consecutivo.toString(), numero: numero.toString(), estado: 'O' });
+        stringFila.split('').forEach((stringAsiento) => {
+          if (stringAsiento !== '_') {
+            if (
+              this.globals.rutaIda.ocupado != null &&
+              this.globals.rutaIda.ocupado.length > 0 &&
+              this.globals.rutaIda.ocupado.includes(numero.toString())
+            ) {
+              listaFila.push({
+                consecutivo: consecutivo.toString(),
+                numero: numero.toString(),
+                estado: 'O',
+              });
+            } else {
+              listaFila.push({
+                consecutivo: consecutivo.toString(),
+                numero: numero.toString(),
+                estado: stringAsiento,
+              });
+            }
+            numero++;
           } else {
-            listaFila.push({ consecutivo: consecutivo.toString(), numero: numero.toString(), estado: stringAsiento });
+            listaFila.push({
+              consecutivo: consecutivo.toString(),
+              numero: '0',
+              estado: stringAsiento,
+            });
           }
-          numero++;
-        } else {
-          listaFila.push({ consecutivo: consecutivo.toString(), numero: '0', estado: stringAsiento });
-        }
-        consecutivo++;
+          consecutivo++;
+        });
+
+        this.miSeatmap.push(listaFila);
       });
-
-      this.miSeatmap.push(listaFila);
-
-    });
   }
 
   /// Metodo ejecutado al seleccionar un asiento
   public seleccionAsiento(puesto: Puesto) {
-    const flag = this.asientosSeleccionados.some(asiento => asiento.numero === puesto.numero);
+    const flag = this.asientosSeleccionados.some(
+      (asiento) => asiento.numero === puesto.numero
+    );
     this.cargandoCuentas = true;
 
     if (flag === false) {
       // if (this.asientosSeleccionados.length < Number(this.globals.cantidad)) {
-        this.websocketsService.tripReservation(this.globals.rutaIda.id.toString(), puesto.numero, 'S');
-        this.asientosSeleccionados.push(puesto);
-        this.miSeatmap.forEach(fila => {
-          fila.forEach(asiento => {
-            if (asiento.numero === puesto.numero && (asiento.estado !== '_' || asiento.estado !== 'O')) {
-              asiento.estado = 'a';
-            }
-          });
+      this.websocketsService.tripReservation(
+        this.globals.rutaIda.id.toString(),
+        puesto.numero,
+        'S'
+      );
+      this.asientosSeleccionados.push(puesto);
+      this.miSeatmap.forEach((fila) => {
+        fila.forEach((asiento) => {
+          if (
+            asiento.numero === puesto.numero &&
+            (asiento.estado !== '_' || asiento.estado !== 'O')
+          ) {
+            asiento.estado = 'a';
+          }
         });
+      });
       // }
     } else {
-      this.websocketsService.tripReservation(this.globals.rutaIda.id.toString(), puesto.numero, 'D');
-      this.miSeatmap.forEach(fila => {
-        fila.forEach(asiento => {
-          if (asiento.numero === puesto.numero && (asiento.estado !== '_' || asiento.estado !== 'O')) {
+      this.websocketsService.tripReservation(
+        this.globals.rutaIda.id.toString(),
+        puesto.numero,
+        'D'
+      );
+      this.miSeatmap.forEach((fila) => {
+        fila.forEach((asiento) => {
+          if (
+            asiento.numero === puesto.numero &&
+            (asiento.estado !== '_' || asiento.estado !== 'O')
+          ) {
             asiento.estado = 'f';
           }
         });
       });
-      this.asientosSeleccionados = this.asientosSeleccionados.filter(asiento => (asiento.numero !== puesto.numero));
+      this.asientosSeleccionados = this.asientosSeleccionados.filter(
+        (asiento) => asiento.numero !== puesto.numero
+      );
     }
     this.globals.asientosSeleccionadosIda = this.asientosSeleccionados;
-    localStorage.setItem('asientosSeleccionadosIda', JSON.stringify(this.globals.asientosSeleccionadosIda));
+    localStorage.setItem(
+      'asientosSeleccionadosIda',
+      JSON.stringify(this.globals.asientosSeleccionadosIda)
+    );
     // tslint:disable-next-line: radix
-    this.valorTotal = parseInt(this.globals.rutaIda.precio_primera_clase) * this.asientosSeleccionados.length;
+    this.valorTotal =
+      parseInt(this.globals.rutaIda.precio_primera_clase) *
+      this.asientosSeleccionados.length;
 
-    const value: number = (this.asientosSeleccionados.length * Number(this.globals.rutaIda.precio_primera_clase));
+    const value: number =
+      this.asientosSeleccionados.length *
+      Number(this.globals.rutaIda.precio_primera_clase);
     if (this.asientosSeleccionados.length > 0) {
       /// Hace petición de lista de cobros con los asientos seleccionados
-      this.dataService.getCobros(value.toString()).subscribe(dataCobro => {
+      this.dataService.getCobros(value.toString()).subscribe((dataCobro) => {
         this.cuentas = [];
         let resp;
         resp = dataCobro;
-        resp.forEach(cobro => {
-          this.cuentas.push({ nombre: cobro.nombre, mensaje: cobro.mensaje, valor: cobro.valor });
+        resp.forEach((cobro) => {
+          this.cuentas.push({
+            nombre: cobro.nombre,
+            mensaje: cobro.mensaje,
+            valor: cobro.valor,
+          });
         });
-        const total = this.cuentas.find(dato => (dato.nombre === 'Total'));
+        const total = this.cuentas.find((dato) => dato.nombre === 'Total');
         this.globals.totalCompraIda = total.valor.toString();
       });
     }
@@ -315,12 +387,17 @@ export class ListaViajesComponent implements OnInit {
   /// Metodo ejecutado al recibir mensaje del servidor sobre estado de un asiento
   public editarAsiento(numero: string, estado: string) {
     if (numero != null && estado != null) {
-      const flag = this.asientosSeleccionados.some(asiento => asiento.numero === numero);
+      const flag = this.asientosSeleccionados.some(
+        (asiento) => asiento.numero === numero
+      );
       if (!flag) {
         let indexPuesto;
         // tslint:disable-next-line: prefer-for-of
-        for (let indexFila = 0; indexFila < this.miSeatmap.length; indexFila++) {
-
+        for (
+          let indexFila = 0;
+          indexFila < this.miSeatmap.length;
+          indexFila++
+        ) {
           const puestoACambiar = this.miSeatmap[indexFila].find((item, i) => {
             if (item.numero === numero) {
               indexPuesto = i;
@@ -328,7 +405,11 @@ export class ListaViajesComponent implements OnInit {
             }
           });
           if (puestoACambiar) {
-            const puestoNuevo: Puesto = { numero, estado, consecutivo: puestoACambiar.consecutivo };
+            const puestoNuevo: Puesto = {
+              numero,
+              estado,
+              consecutivo: puestoACambiar.consecutivo,
+            };
             this.miSeatmap[indexFila][indexPuesto] = puestoNuevo;
             break;
           }

@@ -66,3 +66,32 @@
         transform: rotate(360deg);
     }
 }
+
+.slct {
+  display: flex;
+    border-left: 1px solid #f05a24;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.seatcant {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.nodis {
+  background-color: gray !important;
+}
+.nodis:hover {
+  pointer-events: none;
+}
+
+.logoemp {
+  width: 40%;
+  height: 65%;
+}
+
+.namemp{
+  margin: 0;
+}

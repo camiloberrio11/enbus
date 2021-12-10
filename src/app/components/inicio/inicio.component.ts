@@ -37,6 +37,7 @@ import { EnbusService } from 'src/app/services/enbus/enbus.service';
 /// Componente dedicado para la página de inicio
 /// Se encarga de mostrar la información principal de la empresa y es el primer paso para el IBE
 export class InicioComponent implements OnInit {
+  date = new Date().getFullYear();
   paymentsMethod = [
     'assets/images/tc.png',
     'assets/images/susuerte.png',
@@ -334,112 +335,91 @@ export class InicioComponent implements OnInit {
 
   /// Metodo de envío de datos de busqueda
   onSubmit() {
-    console.log(this.globals);
     this.getViajes();
   }
 
   getViajes() {
     /// Hace la petición de lista de viajes de ida
-    this.dataService
-      .getEnrutamientos(
-        this.globals.origen,
-        this.globals.destino,
-        this.globals.fechaIda
-      )
-      .subscribe((dataIda) => {
-        let resp1;
-        resp1 = dataIda;
-        /// Si hay viajes de ida disponibles
-        if (resp1.length > 0) {
-          // this.globals.origen = this.tripForm.value.origen;
-          // this.globals.destino = this.tripForm.value.destino;
-          // this.globals.fechaIda = this.datePipe.transform(this.tripForm.value.ida, 'yyyy-MM-dd');
-          // this.globals.fechaVuelta = this.datePipe.transform(this.tripForm.value.vuelta, 'yyyy-MM-dd');
+    this.enbusService.getAvailability(this.globals.origen, this.globals.destino, this.globals.fechaIda).subscribe(disp => {
+      if (disp.data.length < 1) {
+        Swal.fire({
+          allowOutsideClick: false,
+          showCloseButton: true,
+          icon: 'warning',
+          // tslint:disable-next-line: max-line-length
+          text:
+            this.globals.origen !== ''
+              ? // tslint:disable-next-line: max-line-length
+                `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`
+              : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`,
+          onClose: () => this.router.navigateByUrl('/'),
+        });
+        return;
+      }
+      localStorage.setItem('origen', null);
+      localStorage.setItem('destino', null);
+      localStorage.setItem('cantidad', null);
+      localStorage.setItem('fechaIda', null);
+      localStorage.setItem('fechaVuelta', null);
+      localStorage.setItem('origen', this.globals.origen);
+      localStorage.setItem('destino', this.globals.destino);
+      localStorage.setItem('fechaIda', this.globals.fechaIda);
+      if (this.globals.fechaVuelta != null) {
+        localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
+      }
+      this.router.navigateByUrl('/lista-viajes/');
 
-          // localStorage.clear();
+
+
+
+      if (this.tripForm.value.vuelta !== '') {
+        this.enbusService.getAvailability(this.globals.destino, this.globals.origen, this.globals.fechaVuelta).subscribe(dispVuelta => {
+          if (dispVuelta.data.length < 1) {
+            Swal.fire({
+              allowOutsideClick: false,
+              showCloseButton: true,
+              icon: 'warning',
+              // tslint:disable-next-line: max-line-length
+              text:
+                this.globals.origen !== ''
+                  ? // tslint:disable-next-line: max-line-length
+                    `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`
+                  : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`,
+              onClose: () => this.router.navigateByUrl('/'),
+            });
+            return;
+          }
 
           localStorage.setItem('origen', null);
           localStorage.setItem('destino', null);
           localStorage.setItem('cantidad', null);
           localStorage.setItem('fechaIda', null);
           localStorage.setItem('fechaVuelta', null);
-
           localStorage.setItem('origen', this.globals.origen);
           localStorage.setItem('destino', this.globals.destino);
           localStorage.setItem('fechaIda', this.globals.fechaIda);
-          if (this.globals.fechaVuelta != null) {
-            localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
-          }
+          localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
 
           this.router.navigateByUrl('/lista-viajes/');
-          // tslint:disable-next-line: max-line-length
-          // this.router.navigateByUrl(`/lista-viajes/?origen=${this.globals.origen}&destino=${this.globals.destino}&fecha=${this.globals.fechaIda}`);
-        } else {
-          /// Si no hay viajes de ida disponibles
-          Swal.fire({
-            allowOutsideClick: false,
-            showCloseButton: true,
-            icon: 'warning',
-            // tslint:disable-next-line: max-line-length
-            text:
-              this.globals.origen !== ''
-                ? // tslint:disable-next-line: max-line-length
-                  `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`
-                : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`,
-            onClose: () => this.router.navigateByUrl('/'),
-          });
-        }
-        if (this.tripForm.value.vuelta !== '') {
-          /// Hace la peticion de viajes de vuelta
-          this.dataService
-            .getEnrutamientos(
-              this.globals.destino,
-              this.globals.origen,
-              this.globals.fechaVuelta
-            )
-            .subscribe((dataVuelta) => {
-              let resp2;
-              resp2 = dataVuelta;
-              if (resp2.length > 0) {
-                /// Si hay viajes de vuelta disponibles
-                // this.globals.origen = this.tripForm.value.origen;
-                // this.globals.destino = this.tripForm.value.destino;
-                // this.globals.fechaIda = this.datePipe.transform(this.tripForm.value.ida, 'yyyy-MM-dd');
-                // this.globals.fechaVuelta = this.datePipe.transform(this.tripForm.value.vuelta, 'yyyy-MM-dd');
+        }, err => {
 
-                localStorage.setItem('origen', null);
-                localStorage.setItem('destino', null);
-                localStorage.setItem('cantidad', null);
-                localStorage.setItem('fechaIda', null);
-                localStorage.setItem('fechaVuelta', null);
-                // localStorage.clear();
+        });
 
-                localStorage.setItem('origen', this.globals.origen);
-                localStorage.setItem('destino', this.globals.destino);
-                localStorage.setItem('fechaIda', this.globals.fechaIda);
-                localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
 
-                this.router.navigateByUrl('/lista-viajes/');
-                // tslint:disable-next-line: max-line-length
-                // this.router.navigateByUrl(`/lista-viajes/?origen=${this.globals.origen}&destino=${this.globals.destino}&fecha=${this.globals.fechaIda}`);
-              } else {
-                /// Si no hay viajes de vuelta disponibles
-                Swal.fire({
-                  allowOutsideClick: false,
-                  showCloseButton: true,
-                  icon: 'warning',
-                  // tslint:disable-next-line: max-line-length
-                  text:
-                    this.globals.origen !== ''
-                      ? // tslint:disable-next-line: max-line-length
-                        `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`
-                      : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`,
-                  onClose: () => this.router.navigateByUrl('/'),
-                });
-              }
-            });
-        }
-      });
+
+
+
+
+
+
+      }
+    },
+    err => {
+
+    });
+
+
+
   }
 
   private getOrigins(): void {

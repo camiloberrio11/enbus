@@ -1,3 +1,4 @@
+import { EndpointService } from './../../services/endpoint/endpoint.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -11,6 +12,7 @@ import { Cobro } from '../../models/cuenta.dto';
 import { GlobalService } from 'src/app/services/global/global.service';
 
 import { ActivatedRoute } from '@angular/router';
+import { EnbusService } from 'src/app/services/enbus/enbus.service';
 
 @Component({
   selector: 'app-lista-viajes-vuelta',
@@ -62,6 +64,8 @@ export class ListaViajesVueltaComponent implements OnInit {
   constructor(
     private websocketsService: WebsocketsService,
     private dataService: DataService,
+    private enbusService: EnbusService,
+    private endopointService: EndpointService,
     // private globals: Globals,
     public globals: GlobalService,
     private router: Router,
@@ -129,20 +133,9 @@ export class ListaViajesVueltaComponent implements OnInit {
       console.log('vuelta2', this.globals.fechaVuelta);
 
       /// Hace la petición de lista de viajes de vuelta
-      this.dataService.getEnrutamientos(
-        this.globals.destino,
-        this.globals.origen,
-        this.globals.fechaVuelta,
-      ).subscribe(
-        dataRutas => {
-          let resp;
-          resp = dataRutas;
-          resp.forEach(ruta => {
-            this.rutas.push(ruta);
-          });
-        },
-        err => { },
-      );
+      this.enbusService.getAvailability(this.globals.destino, this.globals.origen, this.globals.fechaVuelta).subscribe(vuel => {
+        this.rutas = vuel.data;
+      });
 
       /// Carga la información inicial del resumen de compra con los datos del viaje de ida
       // tslint:disable-next-line: max-line-length

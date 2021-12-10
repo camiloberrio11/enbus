@@ -1,9 +1,9 @@
-/// Modelo para manejo de la información de los viajes
-export class Route {
+export interface DisponibilidadRuta {
+  data: {
+    host: string;
     id: number;
     origen: string;
     destino: string;
-    host?: string;
     hora: string;
     fecha: string;
     precio_primera_clase: string;
@@ -16,6 +16,7 @@ export class Route {
     logo_empresa: string;
     disponible: string;
     ocupado: string[];
-    enrutamiento_principal?: string;
-    texto_unificado?: string;
+    texto_unificado: string;
+    enrutamiento_principal: string;
+  }[];
 }
