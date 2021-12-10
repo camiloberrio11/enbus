@@ -156,9 +156,9 @@ export class InicioComponent implements OnInit {
       this.ciudadesEmpresa = info.ciudades;
     });
     /// Hace la petición de 2 testimonios para ser mostrados en su sección
-    this.testimoniosService
-      .get2Testimonios()
-      .then((dataTestimonios) => (this.testimonios = dataTestimonios));
+    // this.testimoniosService
+    //   .get2Testimonios()
+    //   .then((dataTestimonios) => (this.testimonios = dataTestimonios));
     /// Hace la petición de las imágenes que serán mostradas en el slider inicial
     this.sliderService
       .getSliderInicio()
