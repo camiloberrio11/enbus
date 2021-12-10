@@ -95,3 +95,8 @@
 .namemp{
   margin: 0;
 }
+
+
+.cond {
+  background-color: transparent !important;
+}
