@@ -217,10 +217,14 @@ export class InicioComponent implements OnInit {
   /// Metodo ejecutado al seleccionar un destino
   onChangeDestino(deviceValue) {
     this.globals.destino = deviceValue;
+    const day = new Date().getDay();
+    const dayFormat = `${day}`.padStart(2, '0');
+    const month = new Date().getMonth() + 1;
+    const year = new Date().getFullYear();
     // const self = this;
     /// Hace la petición de la fecha máxima de viaje de ida
     this.enbusService
-      .getFechaMaxima(this.globals.origen, this.globals.destino, '09/12/2021')
+      .getFechaMaxima(this.globals.origen, this.globals.destino, `${dayFormat}/${month}/${year}`)
       .subscribe(
         (dataIda) => {
           if (!dataIda.data.fecha) {
@@ -244,7 +248,7 @@ export class InicioComponent implements OnInit {
             .getFechaMaxima(
               this.globals.destino,
               this.globals.origen,
-              '09/12/2021'
+              `${dayFormat}/${month}/${year}`
             )
             .subscribe(
               (dataVuelta) => {
@@ -340,41 +344,15 @@ export class InicioComponent implements OnInit {
 
   getViajes() {
     /// Hace la petición de lista de viajes de ida
-    this.enbusService.getAvailability(this.globals.origen, this.globals.destino, this.globals.fechaIda).subscribe(disp => {
-      if (disp.data.length < 1) {
-        Swal.fire({
-          allowOutsideClick: false,
-          showCloseButton: true,
-          icon: 'warning',
-          // tslint:disable-next-line: max-line-length
-          text:
-            this.globals.origen !== ''
-              ? // tslint:disable-next-line: max-line-length
-                `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`
-              : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`,
-          onClose: () => this.router.navigateByUrl('/'),
-        });
-        return;
-      }
-      localStorage.setItem('origen', null);
-      localStorage.setItem('destino', null);
-      localStorage.setItem('cantidad', null);
-      localStorage.setItem('fechaIda', null);
-      localStorage.setItem('fechaVuelta', null);
-      localStorage.setItem('origen', this.globals.origen);
-      localStorage.setItem('destino', this.globals.destino);
-      localStorage.setItem('fechaIda', this.globals.fechaIda);
-      if (this.globals.fechaVuelta != null) {
-        localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
-      }
-      this.router.navigateByUrl('/lista-viajes/');
-
-
-
-
-      if (this.tripForm.value.vuelta !== '') {
-        this.enbusService.getAvailability(this.globals.destino, this.globals.origen, this.globals.fechaVuelta).subscribe(dispVuelta => {
-          if (dispVuelta.data.length < 1) {
+    this.enbusService
+      .getAvailability(
+        this.globals.origen,
+        this.globals.destino,
+        this.globals.fechaIda
+      )
+      .subscribe(
+        (disp) => {
+          if (disp.data.length < 1) {
             Swal.fire({
               allowOutsideClick: false,
               showCloseButton: true,
@@ -383,13 +361,12 @@ export class InicioComponent implements OnInit {
               text:
                 this.globals.origen !== ''
                   ? // tslint:disable-next-line: max-line-length
-                    `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`
-                  : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`,
+                    `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`
+                  : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.origen} y ${this.globals.destino} en esta fecha.`,
               onClose: () => this.router.navigateByUrl('/'),
             });
             return;
           }
-
           localStorage.setItem('origen', null);
           localStorage.setItem('destino', null);
           localStorage.setItem('cantidad', null);
@@ -398,28 +375,54 @@ export class InicioComponent implements OnInit {
           localStorage.setItem('origen', this.globals.origen);
           localStorage.setItem('destino', this.globals.destino);
           localStorage.setItem('fechaIda', this.globals.fechaIda);
-          localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
-
+          if (this.globals.fechaVuelta != null) {
+            localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
+          }
           this.router.navigateByUrl('/lista-viajes/');
-        }, err => {
 
-        });
+          if (this.tripForm.value.vuelta !== '') {
+            this.enbusService
+              .getAvailability(
+                this.globals.destino,
+                this.globals.origen,
+                this.globals.fechaVuelta
+              )
+              .subscribe(
+                (dispVuelta) => {
+                  if (dispVuelta.data.length < 1) {
+                    Swal.fire({
+                      allowOutsideClick: false,
+                      showCloseButton: true,
+                      icon: 'warning',
+                      // tslint:disable-next-line: max-line-length
+                      text:
+                        this.globals.origen !== ''
+                          ? // tslint:disable-next-line: max-line-length
+                            `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`
+                          : `Oops, no hemos encontrado viajes disponibles entre ${this.globals.destino} y ${this.globals.origen} en esta fecha.`,
+                      onClose: () => this.router.navigateByUrl('/'),
+                    });
+                    return;
+                  }
 
+                  localStorage.setItem('origen', null);
+                  localStorage.setItem('destino', null);
+                  localStorage.setItem('cantidad', null);
+                  localStorage.setItem('fechaIda', null);
+                  localStorage.setItem('fechaVuelta', null);
+                  localStorage.setItem('origen', this.globals.origen);
+                  localStorage.setItem('destino', this.globals.destino);
+                  localStorage.setItem('fechaIda', this.globals.fechaIda);
+                  localStorage.setItem('fechaVuelta', this.globals.fechaVuelta);
 
-
-
-
-
-
-
-      }
-    },
-    err => {
-
-    });
-
-
-
+                  this.router.navigateByUrl('/lista-viajes/');
+                },
+                (err) => {}
+              );
+          }
+        },
+        (err) => {}
+      );
   }
 
   private getOrigins(): void {
