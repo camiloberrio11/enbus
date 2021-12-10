@@ -67,4 +67,16 @@ footer {
   background-color: #f05a24;
   color: white;
   text-align: center;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardcont {
+    height: 460px;
+  }
+
+
+  .txtcard{
+    height: 130px;
   }
