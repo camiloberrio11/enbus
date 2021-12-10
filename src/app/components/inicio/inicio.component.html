@@ -207,7 +207,6 @@
 
 <div class="container">
   <div class="row">
-
     <div class="container">
       <div class="row">
         <div *ngFor="let card of cardsHome" class="col-xl-3 col-lg-6 col-12">
@@ -235,7 +234,6 @@
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
@@ -252,9 +250,12 @@
                   Empresas asociadas
                 </h3>
                 <div class="boxpayment">
-                  <button class="btnpayment" *ngFor="let empr of empresasAsociadas">
-                    <img [src]="empr?.image_empresa?.url" [alt]="'Logo' + empr?.nombre_empresa" />
-                  </button>
+                  <img
+                  class="company"
+                    *ngFor="let empr of empresasAsociadas"
+                    [src]="empr?.image_empresa?.url"
+                    [alt]="'Logo' + empr?.nombre_empresa"
+                  />
                 </div>
               </div>
               <div class="media-right align-self-center">
@@ -267,7 +268,6 @@
     </div>
   </div>
 </div>
-
 
 <div class="container mt-3">
   <div class="row">
@@ -297,7 +297,4 @@
   </div>
 </div>
 
-
-<footer>
-  Desarrollado por Metis Consultores {{date}}
-</footer>
+<footer>Desarrollado por Metis Consultores {{ date }}</footer>

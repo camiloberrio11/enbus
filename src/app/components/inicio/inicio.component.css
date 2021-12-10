@@ -80,3 +80,10 @@ footer {
   .txtcard{
     height: 130px;
   }
+
+
+  .company {
+    width: 80px;
+    height: 70px;
+    margin-right: 30px;
+  }
