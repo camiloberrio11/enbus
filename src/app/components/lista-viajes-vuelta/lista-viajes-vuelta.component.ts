@@ -23,7 +23,11 @@ import { EnbusService } from 'src/app/services/enbus/enbus.service';
 /// Se encarga de mostrar la información de los viajes de vuelta y
 /// la información del viaje seleccionado
 export class ListaViajesVueltaComponent implements OnInit {
-
+  labelsSeats = [
+    { label: 'Disponible', class: 'disponible' },
+    { label: 'Ocupado', class: 'ocupado' },
+    { label: 'Seleccionado', class: 'select' },
+  ];
   isMobileResolution: boolean;
   listaViajesVisible: boolean;
   seatMapVisible: boolean;

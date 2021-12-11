@@ -102,17 +102,32 @@
 }
 
 
-.disponibleseat {
+.disponible, .select, .ocupado  {
   width: 30px;
   height: 30px;
-  background-color: blue;
   margin-bottom: 10px;
   margin-right: 10px;
   border-radius: 5px;
   border: none;
+
+}
+
+.disponible, .select, .ocupado:hover {
+  pointer-events: none;
+}
+
+.disponible {
+  background-color: #2b9ced;
+}
+
+.ocupado {
+  background-color: #e64240;
 }
 
 
+.select {
+  background-color: #00ca00;
+}
 .labels {
   width: 30%;
   display: flex;
