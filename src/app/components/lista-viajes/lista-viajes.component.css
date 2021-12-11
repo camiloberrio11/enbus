@@ -100,3 +100,24 @@
 .cond {
   background-color: transparent !important;
 }
+
+
+.disponibleseat {
+  width: 30px;
+  height: 30px;
+  background-color: blue;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+.labels {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+}
+
