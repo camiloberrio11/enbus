@@ -136,10 +136,10 @@ export class ListaViajesVueltaComponent implements OnInit {
       this.enbusService.getAvailability(this.globals.destino, this.globals.origen, this.globals.fechaVuelta).subscribe(vuel => {
         this.rutas = vuel.data;
         this.rutas = this.rutas.sort((a, b) => {
-          const time1 = parseFloat(
+          let time1 = parseFloat(
             a.hora.replace(':', '.').replace(/[^\d.-]/g, '')
           );
-          const time2 = parseFloat(
+          let time2 = parseFloat(
             b.hora.replace(':', '.').replace(/[^\d.-]/g, '')
           );
           if (a.hora.match(/.*pm/)) time1 += 12;

@@ -161,10 +161,10 @@ export class ListaViajesComponent implements OnInit {
           (ida) => {
             this.rutas = ida.data;
             this.rutas = this.rutas.sort((a, b) => {
-              const time1 = parseFloat(
+              let time1 = parseFloat(
                 a.hora.replace(':', '.').replace(/[^\d.-]/g, '')
               );
-              const time2 = parseFloat(
+              let time2 = parseFloat(
                 b.hora.replace(':', '.').replace(/[^\d.-]/g, '')
               );
               if (a.hora.match(/.*pm/)) time1 += 12;
