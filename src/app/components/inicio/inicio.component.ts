@@ -1,3 +1,4 @@
+import { MetodosPago } from 'src/app/shared/prismic/models/slider.dto';
 import { EmpresaAsociada } from './../../shared/prismic/models/slider.dto';
 import { Component, OnChanges, OnInit } from '@angular/core';
 import {
@@ -42,22 +43,7 @@ export class InicioComponent implements OnInit {
   date = new Date().getFullYear();
   cardsHome: CardHome[] = [];
   empresasAsociadas: EmpresaAsociada[] = [];
-  paymentsMethod = [
-    'assets/images/tc.png',
-    'assets/images/susuerte.png',
-    'assets/images/sured.png',
-    'assets/images/redservi.png',
-    'assets/images/puntored.png',
-    'assets/images/pse.png',
-    'assets/images/baloto.png',
-    'assets/images/bancolombia.png',
-    'assets/images/efecty.png',
-    'assets/images/gana.png',
-    'assets/images/apostar.png',
-    'assets/images/nequi.png',
-    'assets/images/dimonex.png',
-    'assets/images/payvalida.png',
-  ];
+  paymentsMethod: MetodosPago[] = [];
 
   faqs: Faq[];
   testimonios: Testimonio[];
@@ -178,7 +164,12 @@ export class InicioComponent implements OnInit {
 
     this.sliderService
       .getEmpresasAsociadas()
-      .then((info) => this.empresasAsociadas = info);
+      .then((info) => (this.empresasAsociadas = info));
+
+    // Obtener metodos pago
+    this.sliderService
+      .getMetodosPago()
+      .then((info) => (this.paymentsMethod = info));
   }
 
   /// Metodo ejecutado al seleccionar un origen

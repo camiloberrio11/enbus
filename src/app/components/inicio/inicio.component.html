@@ -281,9 +281,12 @@
                   Métodos de pago
                 </h3>
                 <div class="boxpayment">
-                  <button class="btnpayment" *ngFor="let btn of paymentsMethod">
-                    <img [src]="btn" alt="logo-payment" />
-                  </button>
+                  <ng-container *ngFor="let btn of paymentsMethod">
+                    <button class="btnpayment"  *ngIf="btn?.habilitado">
+                      <img [src]="btn?.image_card?.url" [alt]="'logo-payment' + btn?.nombre_mostrar" />
+                    </button>
+                  </ng-container>
+
                 </div>
               </div>
               <div class="media-right align-self-center">

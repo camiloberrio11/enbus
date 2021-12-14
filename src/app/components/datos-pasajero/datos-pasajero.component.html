@@ -253,13 +253,13 @@
                             <div class="row">
                               <div *ngFor="let metodo of mediosDePago">
                                 <div class="col-4 custom-control custom-radio mr-4"
-                                  *ngIf="(tiempoMayor == true || metodo.prontoPago == true )">
+                                  *ngIf="(tiempoMayor || metodo.pronto_pago) == true && metodo.habilitado">
                                   <div class="row">
-                                    <input type="radio" [attr.id]="metodo.nombre" name="customRadio"
+                                    <input type="radio" [attr.id]="metodo.nombre_mostrar" name="customRadio"
                                       class="custom-control-input align-middle"
-                                      (change)="handleChange(metodo.nombreApi)">
-                                    <label class="custom-control-label align-middle" [attr.for]="metodo.nombre">
-                                      <img [src]="metodo.imagen" [alt]="metodo.nombre"
+                                      (change)="handleChange(metodo.nombre_api)">
+                                    <label class="custom-control-label align-middle" [attr.for]="metodo.nombre_mostrar">
+                                      <img [src]="metodo.image_card?.url" [alt]="metodo.nombre_mostrar"
                                         style="max-width: 100px; vertical-align:middle;">
                                     </label>
                                   </div>

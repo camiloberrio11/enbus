@@ -1,4 +1,4 @@
-import { EmpresaAsociada } from './../../shared/prismic/models/slider.dto';
+import { EmpresaAsociada, MetodosPago } from './../../shared/prismic/models/slider.dto';
 import { Inject, Injectable } from '@angular/core';
 import { PrismicService } from '../../shared/prismic/prismic.service.interface';
 import { Query } from '../../shared/prismic/query';
@@ -71,6 +71,16 @@ export class SliderServiceImpl implements SliderService {
       return ct.api.query(Query.byType("empresas-asociadas")).then((response) => {
         const cards = response.results[0].data.tarjeta_empresa;
         return cards;
+      });
+    });
+  }
+
+  // Metodos de pago
+  getMetodosPago(): Promise<MetodosPago[]> {
+    return this.prismic.buildContext().then((ct) => {
+      return ct.api.query(Query.byType("metodos-pago")).then((response) => {
+        const payments = response.results[0].data.metodo_pago;
+        return payments;
       });
     });
   }

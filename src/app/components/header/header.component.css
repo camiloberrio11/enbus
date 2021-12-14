@@ -75,9 +75,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      background-color: transparent;
 }
 
 
 .mtop {
   margin-top: 15px;
+  margin-bottom: 15px;
 }

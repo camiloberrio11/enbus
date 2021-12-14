@@ -132,13 +132,22 @@ export class ListaViajesVueltaComponent implements OnInit {
       /// Validación de formulario diligenciado
       this.formularioInicio();
     } else {
-
-      console.log('ida2', this.globals.fechaIda);
-      console.log('vuelta2', this.globals.fechaVuelta);
-
       /// Hace la petición de lista de viajes de vuelta
       this.enbusService.getAvailability(this.globals.destino, this.globals.origen, this.globals.fechaVuelta).subscribe(vuel => {
         this.rutas = vuel.data;
+        this.rutas = this.rutas.sort((a, b) => {
+          const time1 = parseFloat(
+            a.hora.replace(':', '.').replace(/[^\d.-]/g, '')
+          );
+          const time2 = parseFloat(
+            b.hora.replace(':', '.').replace(/[^\d.-]/g, '')
+          );
+          if (a.hora.match(/.*pm/)) time1 += 12;
+          if (b.hora.match(/.*pm/)) time2 += 12;
+          if (time1 < time2) return -1;
+          if (time1 > time2) return 1;
+          return 0;
+        });
       });
 
       /// Carga la información inicial del resumen de compra con los datos del viaje de ida

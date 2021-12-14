@@ -32,3 +32,17 @@ export class EmpresaAsociada {
   };
   nombre_empresa: string;
 }
+
+
+export class MetodosPago {
+  image_card: {
+    dimensions: { width: number; height: number };
+    alt?: any;
+    copyright?: any;
+    url: string;
+  };
+  nombre_mostrar: string;
+  nombre_api: string;
+  pronto_pago: boolean;
+  habilitado: boolean;
+}

@@ -14,6 +14,8 @@ import { GlobalService } from 'src/app/services/global/global.service';
 import { Usuario } from 'src/app/models/usuario.dto';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Comprador } from 'src/app/models/comprador.dto';
+import { SliderServiceImpl } from 'src/app/services/slider/slider.service';
+import { MetodosPago } from 'src/app/shared/prismic/models/slider.dto';
 
 interface Field {
   name: string;
@@ -58,7 +60,7 @@ export class DatosPasajeroComponent implements OnInit {
   /**
    * Metodos de pago disponibles
    */
-  public mediosDePago = [];
+  public mediosDePago: MetodosPago[] = [];
 
   /**
    * Tipos de documento disponibles
@@ -140,6 +142,7 @@ export class DatosPasajeroComponent implements OnInit {
     private websocketsService: WebsocketsService,
     private dataService: DataService,
     private authService: AuthService,
+    private sliderService: SliderServiceImpl
   ) {
     if (this.globals.origen == null || this.globals.destino == null || this.globals.fechaIda == null) {
       Swal.fire({
@@ -181,7 +184,9 @@ export class DatosPasajeroComponent implements OnInit {
       });
     }
 
-    this.mediosDePago = this.dataService.getMetodosPago();
+    // this.mediosDePago = this.dataService.getMetodosPago();
+    this.metodosPago();
+
   }
 
   ngOnInit() {
@@ -934,5 +939,16 @@ export class DatosPasajeroComponent implements OnInit {
       rv.addControl(field.name, (field.control = new FormControl('')));
     });
     return rv;
+  }
+
+  private async metodosPago(): Promise<void> {
+    try {
+      const metodos = await this.sliderService.getMetodosPago();
+      this.mediosDePago = metodos;
+      // console.log(metodos);
+
+    } catch (error) {
+      console.warn(error);
+    }
   }
 }
