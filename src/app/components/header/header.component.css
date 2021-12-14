@@ -83,3 +83,37 @@
   margin-top: 15px;
   margin-bottom: 15px;
 }
+
+
+img {
+  height: 80px;
+      margin: 10px;
+}
+
+
+.headerr {
+  margin-left: 205px;
+  margin-right: 230px;
+}
+
+
+@media (max-width: 600px) {
+  .mobhe {
+    display: flex;
+    justify-content: center;
+  }
+  .headerr {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+  .social {
+    display: none;
+  }
+  img {
+    height: 50px;
+  }
+}
+
+.trsp {
+  background-color: transparent;
+}

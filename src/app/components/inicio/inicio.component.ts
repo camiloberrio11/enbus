@@ -40,7 +40,6 @@ import { EnbusService } from 'src/app/services/enbus/enbus.service';
 /// Componente dedicado para la página de inicio
 /// Se encarga de mostrar la información principal de la empresa y es el primer paso para el IBE
 export class InicioComponent implements OnInit {
-  date = new Date().getFullYear();
   cardsHome: CardHome[] = [];
   empresasAsociadas: EmpresaAsociada[] = [];
   paymentsMethod: MetodosPago[] = [];

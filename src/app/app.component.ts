@@ -40,6 +40,7 @@ import { Location } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   public mediaButtonState = 'inactive';
+  date = new Date().getFullYear();
   public cookieBannerState = 'active';
   route: string;
 
