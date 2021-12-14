@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "web-flota-ospina": {
+    "enbus": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -73,21 +73,21 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "web-flota-ospina:build"
+            "browserTarget": "enbus:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "web-flota-ospina:build:production"
+              "browserTarget": "enbus:build:production"
             },
             "en": {
-              "browserTarget": "web-flota-ospina:build:en"
+              "browserTarget": "enbus:build:en"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "web-flota-ospina:build"
+            "browserTarget": "enbus:build"
           }
         },
         "test": {
@@ -125,16 +125,16 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "web-flota-ospina:serve"
+            "devServerTarget": "enbus:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "web-flota-ospina:serve:production"
+              "devServerTarget": "enbus:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "web-flota-ospina"
+  "defaultProject": "enbus"
 }
